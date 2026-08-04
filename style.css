@@ -7,7 +7,8 @@
     --color-primary-light: #1e293b;
     --color-gold: #c59b27;
     --color-gold-hover: #a8811e;
-    --color-text-light: #0f172a;
+    --color-text-light: #ffffff;
+    --color-text-dark: #0f172a;
     --color-text-muted: #64748b;
     --color-green: #10b981;
     --color-red: #ef4444;
@@ -32,7 +33,7 @@
 
 body {
     background-color: var(--bg-dark);
-    color: var(--color-text-light);
+    color: var(--color-text-dark);
     font-family: var(--font-body);
     min-height: 100vh;
     display: flex;
@@ -249,7 +250,7 @@ body {
 .chapter-title {
     font-weight: 600;
     font-size: 0.95rem;
-    color: var(--color-text-light);
+    color: var(--color-text-dark);
 }
 
 .chapter-desc {
@@ -345,7 +346,7 @@ body {
 }
 
 .tab-btn:hover {
-    color: var(--color-text-light);
+    color: var(--color-text-dark);
     background-color: rgba(255,255,255,0.02);
 }
 
@@ -404,7 +405,7 @@ body {
 .chapter-intro-banner h1 {
     font-family: var(--font-heading);
     margin: 0.5rem 0;
-    color: white;
+    color: var(--color-text-dark);
     font-size: 2.2rem;
 }
 
@@ -416,7 +417,7 @@ body {
 .section-heading {
     font-family: var(--font-heading);
     font-size: 1.4rem;
-    color: var(--color-text-light);
+    color: var(--color-text-dark);
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
@@ -499,7 +500,7 @@ body {
 .card-term {
     font-family: var(--font-heading);
     font-size: 1.25rem;
-    color: white;
+    color: var(--color-text-dark);
 }
 
 .card-body {
@@ -612,7 +613,7 @@ input[type="range"] {
     -webkit-appearance: none;
     width: 100%;
     height: 6px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.08);
     border-radius: 3px;
     outline: none;
 }
@@ -641,8 +642,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .metric-box {
-    background-color: rgba(0,0,0,0.2);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--bg-card);
+    border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: 1rem;
     text-align: center;
@@ -668,7 +669,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     font-family: var(--font-code);
     font-size: 1.5rem;
     font-weight: 700;
-    color: white;
+    color: var(--color-text-dark);
 }
 
 .metric-box.highlighted .metric-value {
@@ -746,7 +747,7 @@ canvas {
 .timeline-title {
     font-family: var(--font-heading);
     font-size: 1rem;
-    color: white;
+    color: var(--color-text-dark);
 }
 
 .timeline-desc {
@@ -805,7 +806,7 @@ canvas {
 
 .scenario-card h3 {
     font-family: var(--font-heading);
-    color: white;
+    color: var(--color-text-dark);
 }
 
 #scenario-description {
@@ -1107,7 +1108,7 @@ canvas {
 
 .lobby-card h2 {
     font-family: var(--font-heading);
-    color: white;
+    color: var(--color-text-dark);
 }
 
 .lobby-rules {
@@ -1116,10 +1117,10 @@ canvas {
     flex-direction: column;
     gap: 1rem;
     width: 100%;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(15, 23, 42, 0.03);
     padding: 1.5rem;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-border);
 }
 
 .rule-item {
@@ -1140,7 +1141,7 @@ canvas {
     font-size: 1.1rem;
     font-weight: 700;
     background-color: var(--color-gold);
-    color: var(--bg-dark);
+    color: #0f172a;
     border: none;
     padding: 1rem 2.5rem;
     border-radius: var(--border-radius);
@@ -1167,7 +1168,7 @@ canvas {
 .quiz-progress-bar {
     width: 100%;
     height: 6px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(15, 23, 42, 0.08);
     border-radius: 3px;
     overflow: hidden;
     margin-bottom: 1rem;
@@ -1195,8 +1196,8 @@ canvas {
     font-family: var(--font-code);
     font-size: 1.1rem;
     font-weight: 700;
-    color: white;
-    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--color-text-dark);
+    background-color: var(--bg-card);
     padding: 0.35rem 1rem;
     border-radius: 20px;
     border: 1px solid var(--color-border);
@@ -1229,7 +1230,7 @@ canvas {
     font-size: 1.1rem;
     line-height: 1.7;
     margin-bottom: 2rem;
-    color: white;
+    color: var(--color-text-dark);
 }
 
 .options-container {
@@ -1239,9 +1240,9 @@ canvas {
 }
 
 .option-btn {
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: var(--color-text-light);
+    background-color: var(--bg-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-dark);
     border-radius: 8px;
     padding: 1.25rem 1.5rem;
     font-family: var(--font-body);
@@ -1255,8 +1256,8 @@ canvas {
 }
 
 .option-btn:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: var(--color-gold);
+    background-color: var(--bg-card-hover);
+    color: var(--color-text-dark);
 }
 
 .option-btn.selected {
@@ -1391,7 +1392,7 @@ canvas {
 
 .results-card h2 {
     font-family: var(--font-heading);
-    color: white;
+    color: var(--color-text-dark);
 }
 
 .score-display {
@@ -1405,7 +1406,7 @@ canvas {
     font-family: var(--font-code);
     font-size: 3rem;
     font-weight: 700;
-    color: white;
+    color: var(--color-text-dark);
 }
 
 .score-percentage {
@@ -1491,7 +1492,7 @@ canvas {
 
 .banner-desc {
     font-size: 0.85rem;
-    color: var(--color-text-light);
+    color: var(--color-text-dark);
 }
 
 /* Level Up Fullscreen Modal */
@@ -1710,7 +1711,7 @@ canvas {
     font-family: var(--font-code);
     font-size: 1.3rem;
     font-weight: 700;
-    color: white;
+    color: var(--color-text-dark);
 }
 
 /* MP Grid Structure */

@@ -1732,7 +1732,8 @@ function resetQuizTimer() {
 function handleQuizTimeout() {
     deductXP(30);
     quizXPAccumulator -= 30;
-    showRemedyScreen(false, "Timeout! You ran out of time.");
+    currentQuestionIndex++;
+    loadQuizQuestion(currentQuestionIndex);
 }
 
 function selectOption(selectedIdx) {
@@ -1756,13 +1757,13 @@ function selectOption(selectedIdx) {
             quizScore++;
             addXP(40);
             quizXPAccumulator += 40;
-            showRemedyScreen(true);
         } else {
             deductXP(25);
             quizXPAccumulator -= 25;
-            showRemedyScreen(false);
         }
-    }, 600);
+        currentQuestionIndex++;
+        loadQuizQuestion(currentQuestionIndex);
+    }, 1000);
 }
 
 function showRemedyScreen(isCorrect, customTitle = "") {
