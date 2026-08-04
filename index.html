@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Floor Test | Constitutional Majority Simulator</title>
+    <meta name="description" content="Master the complex voting majorities of the Indian Constitution through interactive calculators, visual simulators, and competitive high-stakes quizzes.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;700;900&family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Persistent Navigation Bar -->
+    <nav class="navbar" id="main-nav">
+        <div class="nav-left">
+            <button class="menu-btn" id="menu-toggle-btn" aria-label="Toggle Chapter Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="brand">
+                <span class="brand-title">THE FLOOR TEST</span>
+                <span class="brand-subtitle">Constitutional Majority Simulator</span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <!-- User Progression Widget -->
+            <div class="user-progression" id="progression-widget">
+                <div class="rank-badge">
+                    <i class="fa-solid fa-building-columns gold-icon"></i>
+                    <span id="user-rank" class="rank-name">Backbencher</span>
+                </div>
+                <div class="xp-display">
+                    <span class="xp-label">XP</span>
+                    <span id="user-xp" class="xp-value">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Chapter Selector Drawer -->
+    <aside class="sidebar-drawer" id="chapter-sidebar">
+        <div class="sidebar-header">
+            <h3>Chapters</h3>
+            <button class="close-btn" id="menu-close-btn">&times;</button>
+        </div>
+        <ul class="chapter-list">
+            <li class="chapter-item active" data-chapter="1">
+                <div class="chapter-num">01</div>
+                <div class="chapter-info">
+                    <span class="chapter-title">Simple Majority</span>
+                    <span class="chapter-desc">Ordinary & Money Bills</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </li>
+            <li class="chapter-item locked" data-chapter="2" id="chap-2-item">
+                <div class="chapter-num">02</div>
+                <div class="chapter-info">
+                    <span class="chapter-title">Effective & Absolute</span>
+                    <span class="chapter-desc">Removing Presiding Officers</span>
+                </div>
+                <i class="fa-solid fa-lock lock-icon"></i>
+            </li>
+            <li class="chapter-item locked" data-chapter="3" id="chap-3-item">
+                <div class="chapter-num">03</div>
+                <div class="chapter-info">
+                    <span class="chapter-title">Special Majority (Art. 368)</span>
+                    <span class="chapter-desc">Constitutional Amendments</span>
+                </div>
+                <i class="fa-solid fa-lock lock-icon"></i>
+            </li>
+            <li class="chapter-item locked" data-chapter="4" id="chap-4-item">
+                <div class="chapter-num">04</div>
+                <div class="chapter-info">
+                    <span class="chapter-title">Presidential Impeachment</span>
+                    <span class="chapter-desc">Special Majority under Article 61</span>
+                </div>
+                <i class="fa-solid fa-lock lock-icon"></i>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <button class="reset-btn" id="reset-progress-btn">
+                <i class="fa-solid fa-rotate-left"></i> Reset Progression
+            </button>
+        </div>
+    </aside>
+
+    <!-- Overlay for Sidebar -->
+    <div class="drawer-overlay" id="sidebar-overlay"></div>
+
+    <!-- Sub-navigation for Modules (SPA Tabs) -->
+    <div class="module-tabs">
+        <button class="tab-btn active" data-tab="learn">
+            <i class="fa-solid fa-book-open"></i> <span>Learn</span>
+        </button>
+        <button class="tab-btn" data-tab="play">
+            <i class="fa-solid fa-gamepad"></i> <span>Play</span>
+        </button>
+        <button class="tab-btn" data-tab="examine">
+            <i class="fa-solid fa-user-graduate"></i> <span>Examine</span>
+        </button>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="main-container">
+        <!-- Notification Banner for Level Up -->
+        <div class="notification-banner hidden" id="level-up-banner">
+            <div class="banner-content">
+                <i class="fa-solid fa-trophy trophy-icon animate-bounce"></i>
+                <div class="banner-text">
+                    <h4 class="banner-title">Rank Promoted!</h4>
+                    <p class="banner-desc">You have risen to <span id="new-rank-name">MP</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: LEARN -->
+        <section id="tab-learn" class="tab-content active">
+            <div class="chapter-intro-banner">
+                <span class="chapter-badge">Chapter <span class="current-chap-num">1</span></span>
+                <h1 id="learn-chapter-title">Simple Majority</h1>
+                <p id="learn-chapter-subtitle">The baseline democratic mechanism of the floor test.</p>
+            </div>
+
+            <!-- Concept Swipe Cards Grid -->
+            <div class="deck-container">
+                <h2 class="section-heading"><i class="fa-solid fa-address-card gold-icon"></i> Concept Cards</h2>
+                <div class="swipe-area">
+                    <div class="card-stack" id="card-stack">
+                        <!-- Cards will be populated by JavaScript -->
+                    </div>
+                    <div class="swipe-controls">
+                        <button class="swipe-btn prev-btn" id="card-prev-btn" aria-label="Previous card">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <span class="card-indicator" id="card-indicator">1 / 3</span>
+                        <button class="swipe-btn next-btn" id="card-next-btn" aria-label="Next card">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Visualization and Calculator Grid -->
+            <div class="calculator-grid">
+                <div class="calc-card">
+                    <h2 class="section-heading">
+                        <i class="fa-solid fa-sliders gold-icon"></i> Majority Threshold Calculator
+                    </h2>
+                    <p class="section-subtext">Adjust the parliamentary variables below to see the dynamic threshold requirements update in real-time.</p>
+                    
+                    <div class="sliders-container">
+                        <!-- Slider: Total Seats -->
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <label for="range-total">Total Strength of House</label>
+                                <span class="slider-val" id="val-total">545</span>
+                            </div>
+                            <input type="range" id="range-total" min="100" max="600" value="545" step="1">
+                        </div>
+
+                        <!-- Slider: Vacancies -->
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <label for="range-vacant">Vacancies (Resignations/Deaths)</label>
+                                <span class="slider-val" id="val-vacant">5</span>
+                            </div>
+                            <input type="range" id="range-vacant" min="0" max="100" value="5" step="1">
+                        </div>
+
+                        <!-- Slider: Absent/Abstain -->
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <label for="range-absent">Absent / Abstaining Members</label>
+                                <span class="slider-val" id="val-absent">140</span>
+                            </div>
+                            <input type="range" id="range-absent" min="0" max="300" value="140" step="1">
+                        </div>
+                    </div>
+
+                    <!-- Calculated Metrics Display -->
+                    <div class="metrics-grid">
+                        <div class="metric-box">
+                            <span class="metric-label">Effective Strength</span>
+                            <span class="metric-value" id="metric-effective">540</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-label">Present & Voting</span>
+                            <span class="metric-value" id="metric-present">400</span>
+                        </div>
+                        <div class="metric-box highlighted">
+                            <span class="metric-label" id="threshold-label">Passing Threshold</span>
+                            <span class="metric-value" id="metric-threshold">201</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h2 class="section-heading">
+                        <i class="fa-solid fa-chart-pie gold-icon"></i> Professional Floor Visualization
+                    </h2>
+                    <p class="section-subtext">Seaborn/ggplot-style mathematical breakdown of the voting threshold.</p>
+                    <div class="canvas-container">
+                        <canvas id="majority-chart" width="450" height="350"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cinematic Historical Timeline -->
+            <div class="timeline-section">
+                <h2 class="section-heading"><i class="fa-solid fa-scroll gold-icon"></i> Historical Case Anchors</h2>
+                <p class="section-subtext">Horizontal cinematic feed of historical events showcasing this majority in action.</p>
+                <div class="timeline-container" id="timeline-container">
+                    <!-- Timeline items will be populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: PLAY -->
+        <section id="tab-play" class="tab-content">
+            <div class="chapter-intro-banner">
+                <span class="chapter-badge">Chapter <span class="current-chap-num">1</span> Simulator</span>
+                <h1>Pass the Bill Simulator</h1>
+                <p>Drag and drop political factions to secure a floor test victory.</p>
+            </div>
+
+            <!-- Play Mode Selector -->
+            <div class="play-mode-subnav">
+                <button class="play-mode-btn active" id="btn-play-factions">
+                    <i class="fa-solid fa-users-rectangle"></i> Faction Lobby (Play 1)
+                </button>
+                <button class="play-mode-btn" id="btn-play-grid">
+                    <i class="fa-solid fa-border-all"></i> Individual MP Grid (Play 2)
+                </button>
+            </div>
+
+            <!-- Play Mode 1: Faction Drag & Drop -->
+            <div class="simulator-layout" id="play-factions-view">
+                <div class="sim-instructions">
+                    <div class="scenario-card">
+                        <div class="scenario-header">
+                            <i class="fa-solid fa-scroll scenario-icon"></i>
+                            <div>
+                                <span class="scenario-badge">Active Scenario (Play 1)</span>
+                                <h3 id="scenario-title">Scenario Title</h3>
+                            </div>
+                        </div>
+                        <p id="scenario-description">Scenario description goes here...</p>
+                        <div class="scenario-details">
+                            <span id="detail-rule">Rule: Simple Majority (> 50% of present & voting)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="drag-drop-arena">
+                    <!-- Drop Zone: Aye -->
+                    <div class="drop-zone-wrapper">
+                        <div class="zone-header ayes-theme">
+                            <i class="fa-solid fa-check-circle"></i> AYES (Pass Bill)
+                        </div>
+                        <div class="drop-zone" id="zone-ayes" data-zone="aye">
+                            <div class="zone-placeholder">Drag factions here to VOTE YES</div>
+                        </div>
+                        <div class="zone-sum" id="sum-ayes">Total: 0 MPs</div>
+                    </div>
+
+                    <!-- Supply Area / Bench -->
+                    <div class="supply-wrapper">
+                        <div class="zone-header neutral-theme">
+                            <i class="fa-solid fa-users"></i> Parliamentary Factions
+                        </div>
+                        <div class="supply-area" id="faction-supply">
+                            <!-- Draggable elements populated by JS -->
+                        </div>
+                        <p class="supply-hint"><i class="fa-solid fa-hand-pointer"></i> Drag factions into AYES or NAYS zones</p>
+                    </div>
+
+                    <!-- Drop Zone: Nay -->
+                    <div class="drop-zone-wrapper">
+                        <div class="zone-header nays-theme">
+                            <i class="fa-solid fa-times-circle"></i> NAYS (Oppose Bill)
+                        </div>
+                        <div class="drop-zone" id="zone-nays" data-zone="nay">
+                            <div class="zone-placeholder">Drag factions here to VOTE NO</div>
+                        </div>
+                        <div class="zone-sum" id="sum-nays">Total: 0 MPs</div>
+                    </div>
+                </div>
+
+                <div class="simulator-controls">
+                    <button class="action-btn secondary-btn" id="reset-sim-btn">
+                        <i class="fa-solid fa-arrow-rotate-left"></i> Reset Board
+                    </button>
+                    <button class="action-btn primary-btn" id="submit-sim-btn">
+                        <i class="fa-solid fa-stamp"></i> Call for Division (Submit)
+                    </button>
+                </div>
+
+                <!-- Simulation Feedback Modal / Alert -->
+                <div class="sim-feedback hidden" id="sim-feedback">
+                    <div class="feedback-icon" id="feedback-icon-container">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="feedback-text">
+                        <h3 id="feedback-title">Division Successful!</h3>
+                        <p id="feedback-desc">Feedback description...</p>
+                        <div class="xp-earned-banner" id="feedback-xp">+50 XP</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Play Mode 2: Individual MP Grid -->
+            <div class="simulator-layout hidden" id="play-grid-view">
+                <div class="sim-instructions">
+                    <div class="scenario-card">
+                        <div class="scenario-header">
+                            <i class="fa-solid fa-table-cells scenario-icon"></i>
+                            <div>
+                                <span class="scenario-badge">Interactive Grid (Play 2)</span>
+                                <h3 id="grid-scenario-title">Scenario Title</h3>
+                            </div>
+                        </div>
+                        <p id="grid-scenario-description">Tick individual MP boxes to cast 'Aye' votes. Gray/Colored status cells represent the active floor state.</p>
+                        <div class="grid-legend">
+                            <div class="legend-item"><span class="legend-box voting-box"></span> <span>Present & Voting: <strong id="legend-count-voting">0</strong></span></div>
+                            <div class="legend-item"><span class="legend-box absent-box"></span> <span>Absent / Abstaining: <strong id="legend-count-absent">0</strong></span></div>
+                            <div class="legend-item"><span class="legend-box vacant-box"></span> <span>Vacant Seats: <strong id="legend-count-vacant">0</strong></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parliamentary MP Grid Area -->
+                <div class="mp-grid-container">
+                    <div class="mp-grid-stats">
+                        <div class="stat-bubble">
+                            <span class="bubble-label">Ayes Cast</span>
+                            <span class="bubble-value" id="grid-ayes-count">0</span>
+                        </div>
+                        <div class="stat-bubble">
+                            <span class="bubble-label">Voting Threshold</span>
+                            <span class="bubble-value" id="grid-threshold-count">0</span>
+                        </div>
+                        <div class="stat-bubble">
+                            <span class="bubble-label">Voting Strength</span>
+                            <span class="bubble-value" id="grid-present-count">0</span>
+                        </div>
+                    </div>
+
+                    <div class="house-grid" id="parliament-mp-grid">
+                        <!-- Dynamic list of checkbox grid items will be injected by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="simulator-controls">
+                    <button class="action-btn secondary-btn" id="reset-grid-btn">
+                        <i class="fa-solid fa-arrow-rotate-left"></i> Reset Selection
+                    </button>
+                    <button class="action-btn primary-btn" id="submit-grid-btn">
+                        <i class="fa-solid fa-check-double"></i> Verify Ticked Votes
+                    </button>
+                </div>
+
+                <!-- Grid Feedback Display -->
+                <div class="sim-feedback hidden" id="grid-feedback">
+                    <div class="feedback-icon" id="grid-feedback-icon-container">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="feedback-text">
+                        <h3 id="grid-feedback-title">Division Successful!</h3>
+                        <p id="grid-feedback-desc">Feedback description...</p>
+                        <div class="xp-earned-banner" id="grid-feedback-xp">+50 XP</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: EXAMINE -->
+        <section id="tab-examine" class="tab-content">
+            <div class="chapter-intro-banner">
+                <span class="chapter-badge">National Competitive Level</span>
+                <h1>Constitutional Assessment</h1>
+                <p>Time-attack analytical assessment testing exact legal formulas. Aiming for Top 200 AIR precision.</p>
+            </div>
+
+            <!-- Quiz Lobby (Initial state) -->
+            <div class="quiz-lobby" id="quiz-lobby-screen">
+                <div class="lobby-card">
+                    <i class="fa-solid fa-clock-rotate-left lobby-icon"></i>
+                    <h2>Time-Attack Mode</h2>
+                    <p>You will face 5 high-stakes multi-variable word problems on <strong>Chapter <span class="current-chap-num">1</span></strong>.</p>
+                    <div class="lobby-rules">
+                        <div class="rule-item">
+                            <i class="fa-solid fa-circle-exclamation text-gold"></i>
+                            <span>25 seconds per question.</span>
+                        </div>
+                        <div class="rule-item">
+                            <i class="fa-solid fa-shield-halved text-gold"></i>
+                            <span>XP is awarded for correct answers, and deducted for incorrect answers or timeouts.</span>
+                        </div>
+                        <div class="rule-item">
+                            <i class="fa-solid fa-unlock-keyhole text-gold"></i>
+                            <span>Pass with at least 80% to unlock the next chapter.</span>
+                        </div>
+                    </div>
+                    <button class="start-quiz-btn" id="start-exam-btn">
+                        <i class="fa-solid fa-bolt"></i> Initiate Assessment
+                    </button>
+                </div>
+            </div>
+
+            <!-- Active Quiz Screen -->
+            <div class="quiz-active-screen hidden" id="quiz-active-screen">
+                <div class="quiz-header">
+                    <div class="quiz-progress-bar">
+                        <div class="progress-fill" id="quiz-progress-fill" style="width: 20%"></div>
+                    </div>
+                    <div class="quiz-meta">
+                        <span class="question-tracker">Question <span id="current-q-num">1</span> of 5</span>
+                        <div class="timer-display" id="quiz-timer-box">
+                            <i class="fa-solid fa-hourglass-half"></i> <span id="quiz-timer-seconds">25</span>s
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <p class="question-text" id="question-text">
+                        Loading question...
+                    </p>
+
+                    <div class="options-container" id="options-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Feedback Overlay / Remedy Section -->
+            <div class="quiz-feedback-overlay hidden" id="quiz-remedy-screen">
+                <div class="remedy-card">
+                    <div class="remedy-header" id="remedy-header-status">
+                        <i class="fa-solid fa-circle-xmark status-icon text-red"></i>
+                        <div>
+                            <h3 id="remedy-status-title">Incorrect Answer</h3>
+                            <p id="remedy-xp-diff">-25 XP</p>
+                        </div>
+                    </div>
+                    
+                    <div class="remedy-body">
+                        <h4>Constitutional Remedy Formula:</h4>
+                        <div class="formula-block" id="remedy-formula">
+                            Simple Majority = &gt; 50% of (Total - Vacancies - Absent)
+                        </div>
+                        <h4>Detailed Legal Analysis:</h4>
+                        <p id="remedy-explanation">
+                            Explanation goes here.
+                        </p>
+                    </div>
+
+                    <button class="action-btn primary-btn" id="remedy-continue-btn">
+                        Continue <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Results Screen -->
+            <div class="quiz-results-screen hidden" id="quiz-results-screen">
+                <div class="results-card">
+                    <i class="fa-solid fa-award results-icon"></i>
+                    <h2>Assessment Complete</h2>
+                    <div class="score-display">
+                        <span class="score-num" id="result-score">4/5</span>
+                        <span class="score-percentage" id="result-percentage">80%</span>
+                    </div>
+                    <div class="result-message" id="result-message">
+                        Congratulations! You have passed the assessment and unlocked the next chapter.
+                    </div>
+                    <div class="xp-results-row">
+                        <span class="xp-result-label">Net XP Earned</span>
+                        <span class="xp-result-value" id="result-xp-earned">+150 XP</span>
+                    </div>
+                    <div class="results-controls">
+                        <button class="action-btn secondary-btn" id="retry-exam-btn">
+                            <i class="fa-solid fa-redo"></i> Retry
+                        </button>
+                        <button class="action-btn primary-btn" id="next-chap-btn">
+                            Next Chapter <i class="fa-solid fa-forward"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Custom Level Up Modal (Overlay) -->
+    <div class="level-up-modal-overlay hidden" id="level-modal-overlay">
+        <div class="level-modal">
+            <div class="modal-glow"></div>
+            <i class="fa-solid fa-crown modal-icon"></i>
+            <h2>Rank Promoted!</h2>
+            <p class="rank-up-sub">Your political stature increases within the Assembly.</p>
+            <div class="rank-transition">
+                <span class="old-rank" id="modal-old-rank">Backbencher</span>
+                <i class="fa-solid fa-circle-arrow-right"></i>
+                <span class="new-rank" id="modal-new-rank">Member of Parliament</span>
+            </div>
+            <p class="rank-benefit-desc">You are now eligible to influence higher legislative floors.</p>
+            <button class="modal-close-btn" id="level-modal-close">Enter the House</button>
+        </div>
+    </div>
+
+    <!-- Main Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
