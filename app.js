@@ -76,13 +76,13 @@ const CHAPTERS_DATA = {
             {
                 year: "1860",
                 title: "The Indigo Commission",
-                desc: "Established under the Indigo Commission Act to investigate the systemic exploitation of indigo farmers. Passed with a simple majority floor voice vote.",
+                desc: "Established under the Indigo Commission Act to investigate indigo farmers' exploitation. Passed with a simple majority voice vote.",
                 lesson: "Simple majority was the primary mechanism used by colonial councils to pass urgent administrative regulations."
             },
             {
                 year: "1956",
                 title: "States Reorganisation Act",
-                desc: "A massive simple-majority legislative reform that redrew boundaries of Indian states based on linguistic lines under Article 3 of the Constitution.",
+                desc: "A massive simple-majority legislative reform that redrew boundaries of Indian states based on linguistic lines under Article 3.",
                 lesson: "Even major constitutional re-mappings only require a Simple Majority under Article 4."
             },
             {
@@ -94,7 +94,7 @@ const CHAPTERS_DATA = {
         ],
         simulator: {
             title: "Pass the Delhi Services Bill",
-            desc: "The Lok Sabha has a total strength of 543. There are 13 vacancies. On the day of voting, 110 opposition members staged a walkout (absent/abstain). Drag enough coalition blocks into the 'Aye' drop zone to pass the bill using a Simple Majority.",
+            desc: "The Lok Sabha has a total strength of 543. There are 13 vacancies. On the day of voting, 110 opposition members staged a walkout. Drag enough coalition blocks into the 'Aye' drop zone to pass the bill using a Simple Majority.",
             totalSeats: 543,
             vacancies: 13,
             absent: 110,
@@ -143,43 +143,121 @@ const CHAPTERS_DATA = {
             {
                 text: "If a No-Confidence Motion is put to vote in the Lok Sabha with a current active strength of 530 (13 vacancies). If 100 members abstain from voting, what is the threshold of 'Aye' votes the Opposition needs to collapse the government?",
                 options: [
-                    "A) 266 votes",
-                    "B) 216 votes",
+                    "A) 216 votes",
+                    "B) 266 votes",
                     "C) 215 votes",
                     "D) 265 votes"
                 ],
-                correctIndex: 1,
-                formula: "Simple Majority = > 50% of present & voting. P&V = 530 - 100 = 430. Threshold = (430/2) + 1 = 216.",
-                explanation: "A No-Confidence Motion requires a simple majority of members present and voting. Out of 530 active members, 100 abstained, so 430 voted. Thus, the threshold is (430/2) + 1 = 216 votes."
-            },
-            {
-                text: "During a joint sitting of Parliament under Article 108, how is a deadlock on an ordinary bill resolved?",
-                options: [
-                    "A) Simple majority of all members of both Houses present and voting",
-                    "B) Two-thirds majority of members of both Houses present and voting",
-                    "C) Absolute majority of both Houses",
-                    "D) Simple majority of Lok Sabha members only"
-                ],
                 correctIndex: 0,
-                formula: "Joint Sitting = Simple majority of combined members present & voting",
-                explanation: "According to Article 108, a bill at a joint sitting is passed by a simple majority of the total number of members of both Houses present and voting."
-            },
-            {
-                text: "An administrative state reorganisation bill (under Article 3) is introduced. The total membership of Lok Sabha is 543. If 200 members are absent, what is the required passing threshold?",
-                options: [
-                    "A) 172 votes",
-                    "B) 272 votes",
-                    "C) 173 votes",
-                    "D) 262 votes"
-                ],
-                correctIndex: 0,
-                formula: "Threshold = (Present & Voting / 2) + 1. P&V = 543 - 200 = 343. Threshold = (343/2) + 1 = 172.",
-                explanation: "Bills under Article 3 require a simple majority of members present and voting. (543 total - 200 absent) = 343 voting. 50% of 343 is 171.5. Thus, more than 50% is 172 votes."
+                formula: "Threshold = (Present & Voting / 2) + 1. P&V = 530 - 100 = 430. Threshold = (430/2) + 1 = 216.",
+                explanation: "Simple majority requires > 50% of present and voting. Out of 530 active members, 100 abstained, leaving 430 present and voting. Half of 430 is 215, so more than 50% is 216 votes."
             }
         ]
     },
     2: {
-        title: "Effective & Absolute Majority",
+        title: "Absolute Majority",
+        subtitle: "The mandatory benchmark for government formation.",
+        ruleName: "Absolute Majority",
+        ruleFormula: "> 50% of Total Sanctioned Strength",
+        concepts: [
+            {
+                term: "Definition",
+                desc: "A majority of <strong>more than 50% of the total statutory/sanctioned strength</strong> of the house. It does not deduct vacancies, absentees, or abstentions.",
+                tip: "This is a fixed number regardless of temporary fluctuations in active membership."
+            },
+            {
+                term: "Applicability",
+                desc: "Used during <strong>Government Formation</strong> to prove a party or coalition has the mandate to govern. It is also the first sieve condition in Article 368.",
+                tip: "For a Lok Sabha of 543 seats, the Absolute Majority is always 273 votes."
+            },
+            {
+                term: "The Math",
+                desc: "If statutory strength = 543, then:<br>Passing Threshold = <strong>(543 / 2) + 1 = 272.5 rounded up to 273</strong>.<br>Even if 200 seats are vacant, you still need 273!",
+                tip: "This ensures stability and prevents minority control during high vacancy periods."
+            }
+        ],
+        timeline: [
+            {
+                year: "1977",
+                title: "Post-Emergency Shift",
+                desc: "The Janata Party coalition secured an absolute majority, crossing the 273 mark, marking the first non-Congress central government.",
+                lesson: "Absolute majority is the primary constitutional test for claiming the right to form a government."
+            },
+            {
+                year: "1984",
+                title: "Landslide Mandate",
+                desc: "The Congress party secured over 400 seats following the general election, establishing a massive absolute majority.",
+                lesson: "A strong absolute majority minimizes coalition vulnerabilities in the legislature."
+            },
+            {
+                year: "2014",
+                title: "Single Party Majority",
+                desc: "The BJP won 282 seats, crossing the 273 threshold alone, forming the first single-party absolute majority government in 30 years.",
+                lesson: "Single party absolute majorities make governance highly centralized."
+            }
+        ],
+        simulator: {
+            title: "Prove Government Formation Mandate",
+            desc: "The Lok Sabha has a total strength of 543. To claim the right to form a government, you must drag factions representing a solid majority to the 'Aye' drop zone to cross the absolute majority threshold of 273.",
+            totalSeats: 543,
+            vacancies: 0,
+            absent: 0,
+            factions: [
+                { id: "coalition-1", name: "Major Party Core", size: 240, coalition: "Treasury" },
+                { id: "coalition-2", name: "Regional Ally A", size: 25, coalition: "Treasury" },
+                { id: "coalition-3", name: "Regional Ally B", size: 15, coalition: "Treasury" },
+                { id: "opposition-1", name: "Opposition Front", size: 220, coalition: "Opposition" },
+                { id: "independents", name: "Independents/Others", size: 43, coalition: "Neutral" }
+            ],
+            verify: (ayes, nays, presentVoting) => {
+                const threshold = Math.floor(543 / 2) + 1; // 273
+                return {
+                    success: ayes >= threshold,
+                    threshold: threshold,
+                    formula: `Ayes (${ayes}) must satisfy the Absolute Majority threshold of 273 (50% of total 543 + 1).`
+                };
+            }
+        },
+        questions: [
+            {
+                text: "In a House with a total sanctioned strength of 500, there are 40 vacant seats on the voting day. What is the absolute majority threshold required to pass a government formation floor test?",
+                options: [
+                    "A) 231 votes",
+                    "B) 251 votes",
+                    "C) 211 votes",
+                    "D) 273 votes"
+                ],
+                correctIndex: 1,
+                formula: "Absolute Majority = (Total Strength / 2) + 1 = (500 / 2) + 1 = 251.",
+                explanation: "Absolute majority is calculated on the total sanctioned strength (500), NOT the active strength. Vacancies do not reduce the denominator. Therefore, the threshold remains 251 votes."
+            },
+            {
+                text: "Why does the Indian Constitution require an Absolute Majority for government formation tests?",
+                options: [
+                    "A) To ensure that coalitions represent at least 2/3 of voters",
+                    "B) To prevent a minority government from ruling without stable legislative backing",
+                    "C) To allow the President to choose any candidate",
+                    "D) To simplify voting in Rajya Sabha"
+                ],
+                correctIndex: 1,
+                explanation: "Requiring more than 50% of the total statutory strength ensures the government has the stability of a true house majority, preventing weak, highly vulnerable minority governments."
+            },
+            {
+                text: "If a house has a total sanctioned strength of 100, and 20 members are absent during a vote, what is the absolute majority threshold?",
+                options: [
+                    "A) 41 votes",
+                    "B) 51 votes",
+                    "C) 31 votes",
+                    "D) 40 votes"
+                ],
+                correctIndex: 1,
+                formula: "Threshold = (100 / 2) + 1 = 51.",
+                explanation: "Absentees do not affect the absolute majority calculation, which is always based on the full statutory capacity. The threshold remains 51."
+            }
+        ]
+    },
+    3: {
+        title: "Effective Majority",
         subtitle: "Used for structural changes and removal of key officers.",
         ruleName: "Effective Majority",
         ruleFormula: "> 50% of Effective Strength (Total - Vacancies)",
@@ -195,9 +273,9 @@ const CHAPTERS_DATA = {
                 tip: "Under Article 94(c), the Speaker is removed by a resolution passed by a majority of all the *then* members of the House."
             },
             {
-                term: "Absolute Majority",
-                desc: "An <strong>Absolute Majority</strong> requires <strong>more than 50% of the total statutory strength</strong> of the house (e.g., 273 in Lok Sabha), regardless of vacancies or absentees.",
-                tip: "Absolute majority is rarely used alone; it is typically a base condition in Special Majorities or during government formation."
+                term: "The Math",
+                desc: "If House Strength = 545, Vacancies = 45, then:<br>Effective Strength = 545 - 45 = 500.<br>Passing Threshold = <strong>(500 / 2) + 1 = 251 votes</strong>.",
+                tip: "Absentees (e.g. 100) do not change this denominator; only actual vacant seats are deducted."
             }
         ],
         timeline: [
@@ -210,7 +288,7 @@ const CHAPTERS_DATA = {
             {
                 year: "2004",
                 title: "Rajya Sabha Chairman Voting",
-                desc: "Resolutions related to Rajyasabha administration and presiding officers highlighted the distinction of excluding vacant seats from the voting pool.",
+                desc: "Resolutions related to Rajya Sabha administration and presiding officers highlighted the distinction of excluding vacant seats from the voting pool.",
                 lesson: "Vacancies are seats that literally do not exist in the active register on the voting day."
             },
             {
@@ -234,10 +312,8 @@ const CHAPTERS_DATA = {
                 { id: "coalition-5", name: "Neutral Bloc", size: 80, coalition: "Neutral" }
             ],
             verify: (ayes, nays, presentVoting) => {
-                // Effective strength = Total (543) - Vacancies (23) = 520.
-                // Threshold = (520 / 2) + 1 = 261.
-                const effectiveStrength = 543 - 23;
-                const threshold = Math.floor(effectiveStrength / 2) + 1;
+                const effectiveStrength = 543 - 23; // 520
+                const threshold = Math.floor(effectiveStrength / 2) + 1; // 261
                 return {
                     success: ayes >= threshold,
                     threshold: threshold,
@@ -271,18 +347,6 @@ const CHAPTERS_DATA = {
                 explanation: "The phrase 'all the then members' means the members present in the register, excluding vacancies. This is the definition of an Effective Majority."
             },
             {
-                text: "If a party wants to prove a majority to form a new government on day 1 (Absolute Majority in Lok Sabha with 545 seats, 0 vacancies), how many minimum seats does it require?",
-                options: [
-                    "A) 273 seats",
-                    "B) 272 seats",
-                    "C) 270 seats",
-                    "D) 268 seats"
-                ],
-                correctIndex: 0,
-                formula: "Absolute Majority = (545/2) + 1 = 273",
-                explanation: "An Absolute Majority requires more than 50% of the total statutory strength of the house. For a house of 545, this is 272.5, which rounds up to 273."
-            },
-            {
                 text: "In a house of 300 seats, there are 20 vacancies. A resolution is moved to remove the Speaker. If 200 members vote, what is the required threshold to pass the resolution?",
                 options: [
                     "A) 101 votes",
@@ -293,22 +357,105 @@ const CHAPTERS_DATA = {
                 correctIndex: 1,
                 formula: "Effective Strength = 300 - 20 = 280. Threshold = (280/2) + 1 = 141.",
                 explanation: "Effective Majority is calculated as > 50% of (Total - Vacancies). Effective Strength = 300 - 20 = 280. Majority threshold = 141. The number of voting members (200) does not change the Effective Strength denominator."
-            },
-            {
-                text: "Which office-bearer's removal does NOT require an effective majority of the legislative chamber?",
-                options: [
-                    "A) Speaker of the Lok Sabha",
-                    "B) President of India",
-                    "C) Chairman of the Rajya Sabha",
-                    "D) Deputy Chairman of the Rajya Sabha"
-                ],
-                correctIndex: 1,
-                formula: "Presidential Impeachment requires a Special Majority under Article 61",
-                explanation: "The President of India is impeached under Article 61 using a special majority (2/3rd of the total membership). The Speaker, Chairman, and Deputy Chairman are removed by effective majorities."
             }
         ]
     },
-    3: {
+    4: {
+        title: "Special Majority (Art. 249/312)",
+        subtitle: "Federal override and national interest resolutions.",
+        ruleName: "Special Majority under Art. 249 / 312",
+        ruleFormula: ">= 2/3 of Members Present & Voting",
+        concepts: [
+            {
+                term: "The 2/3rds Sieve",
+                desc: "Requires a supermajority of <strong>at least two-thirds of the members present and voting</strong> during the division.",
+                tip: "Unlike Article 368, there is NO absolute majority baseline requirement here."
+            },
+            {
+                term: "Applicability",
+                desc: "Used for Rajya Sabha resolutions to authorize Parliament to make laws on <strong>State List subjects (Art. 249)</strong> or to establish a new <strong>All-India Service (Art. 312)</strong>.",
+                tip: "This allows Rajya Sabha, as the representative chamber of States, to grant federal powers to the Centre."
+            },
+            {
+                term: "The Math",
+                desc: "If Rajya Sabha Strength = 245, Vacancies = 5, Absentees/Abstentions = 60, then:<br>Present & Voting = 245 - 5 - 60 = 180.<br>Passing Threshold = <strong>(180 * 2) / 3 = 120 votes</strong>.",
+                tip: "Note that vacancies and absentees directly lower the present and voting denominator."
+            }
+        ],
+        timeline: [
+            {
+                year: "1952",
+                title: "First State List Override",
+                desc: "Rajya Sabha passed a resolution under Article 249 authorizing Parliament to legislate on trade and commerce within states in national interest.",
+                lesson: "Article 249 serves as a flexible federal valve to handle national crises."
+            },
+            {
+                year: "1966",
+                title: "Indian Forest Service",
+                desc: "Created the Indian Forest Service as a new All-India Service under Article 312 via a Rajya Sabha supermajority resolution.",
+                lesson: "All-India Services require high state consensus, hence the 2/3rd voting requirement in Rajya Sabha."
+            }
+        ],
+        simulator: {
+            title: "Create the Indian Environmental Service",
+            desc: "The Rajya Sabha is voting on a resolution under Article 312 to create a new All-India Service. The total strength of the house is 245, with 5 vacancies. 60 members are absent on the day of voting. Drag enough blocks into the 'Aye' zone to satisfy the 2/3rds present & voting threshold.",
+            totalSeats: 245,
+            vacancies: 5,
+            absent: 60,
+            factions: [
+                { id: "coalition-1", name: "Ruling Party Block", size: 120, coalition: "Treasury" },
+                { id: "coalition-2", name: "Support Block", size: 30, coalition: "Treasury" },
+                { id: "coalition-3", name: "Opposition Block", size: 25, coalition: "Opposition" },
+                { id: "coalition-4", name: "Neutrals", size: 10, coalition: "Neutral" }
+            ],
+            verify: (ayes, nays, presentVoting) => {
+                const threshold = Math.ceil((presentVoting * 2) / 3);
+                return {
+                    success: ayes >= threshold,
+                    threshold: threshold,
+                    formula: `Ayes (${ayes}) must be >= 2/3 of Present & Voting (${threshold}) out of ${presentVoting}.`
+                };
+            }
+        },
+        questions: [
+            {
+                text: "A resolution under Article 249 is put to vote in the Rajya Sabha (strength 245). 5 members are vacant, 40 are absent, and 20 abstain. How many 'Aye' votes are required to pass the resolution?",
+                options: [
+                    "A) 120 votes",
+                    "B) 163 votes",
+                    "C) 121 votes",
+                    "D) 164 votes"
+                ],
+                correctIndex: 0,
+                formula: "Present & voting = 245 - 5 - 40 - 20 = 180. Threshold = 2/3 of 180 = 120.",
+                explanation: "Under Article 249, vacancies, absentees, and abstentions are excluded. This leaves 180 members present and voting. 2/3rds of 180 is exactly 120 votes."
+            },
+            {
+                text: "Which chamber of Parliament has the exclusive power to initiate a resolution under Article 312 for creating a new All-India Service?",
+                options: [
+                    "A) Lok Sabha only",
+                    "B) Rajya Sabha only",
+                    "C) Joint Sitting of both houses",
+                    "D) Either Lok Sabha or Rajya Sabha"
+                ],
+                correctIndex: 1,
+                explanation: "Because Rajya Sabha represents the States, it has the exclusive privilege under Article 312 to initiate resolutions to create new All-India Services."
+            },
+            {
+                text: "If a resolution under Article 249 receives 100 'Aye' votes with 144 members voting in the Rajya Sabha, does it pass?",
+                options: [
+                    "A) No, because it requires absolute majority support",
+                    "B) Yes, because 100 is greater than 2/3 of 144",
+                    "C) No, because 2/3 of 144 is 96, but it failed the vacancy check",
+                    "D) Yes, because it satisfies a simple majority"
+                ],
+                correctIndex: 1,
+                formula: "2/3 of 144 = 96. Ayes = 100 >= 96. Result = Pass.",
+                explanation: "2/3 of 144 is 96. Since the resolution received 100 'Aye' votes, it satisfies the Article 249 requirement and passes."
+            }
+        ]
+    },
+    5: {
         title: "Special Majority (Art. 368)",
         subtitle: "The double-sieve formula for constitutional amendments.",
         ruleName: "Special Majority under Art. 368",
@@ -342,17 +489,11 @@ const CHAPTERS_DATA = {
                 title: "61st Amendment Act",
                 desc: "Lowered the voting age in India from 21 to 18 years. Passed with an overwhelming bipartisan Special Majority.",
                 lesson: "Democratic expansions often receive near-unanimous special majority support."
-            },
-            {
-                year: "2016",
-                title: "101st Amendment (GST)",
-                desc: "Introduced the Goods and Services Tax. Required Article 368 Special Majority in Parliament + ratification by 50% of State Assemblies.",
-                lesson: "Federal amendments add a third state-ratification sieve to the Art. 368 special majority."
             }
         ],
         simulator: {
             title: "Pass the GST Constitutional Amendment",
-            desc: "The Lok Sabha is voting on a Constitutional Amendment Bill (GST). The total strength of the house is 545 (with 5 vacancies). 450 members are present and voting. Drag the faction blocks to build a combination that satisfies both Article 368 Special Majority conditions.",
+            desc: "The Lok Sabha is voting on a Constitutional Amendment Bill. The total strength of the house is 545 (with 5 vacancies). 450 members are present and voting. Drag the faction blocks to build a combination that satisfies both Article 368 Special Majority conditions.",
             totalSeats: 545,
             vacancies: 5,
             absent: 95,
@@ -364,8 +505,6 @@ const CHAPTERS_DATA = {
                 { id: "opposition-2", name: "Opposition Party B", size: 30, coalition: "Opposition" }
             ],
             verify: (ayes, nays, presentVoting) => {
-                // Cond A: > 50% of Total Strength (545) = 273.
-                // Cond B: >= 2/3 of Present & Voting (450) = 300.
                 const condAThreshold = Math.floor(545 / 2) + 1; // 273
                 const condBThreshold = Math.ceil((presentVoting * 2) / 3); // 300
                 const success = ayes >= condAThreshold && ayes >= condBThreshold;
@@ -403,18 +542,6 @@ const CHAPTERS_DATA = {
                 explanation: "Here, 2/3rds of those present and voting is 300. Since 300 is also greater than the absolute majority requirement (273), 300 'Aye' votes are required."
             },
             {
-                text: "Which of the following matters requires a Special Majority under Article 368 plus ratification by not less than half of the State Legislatures?",
-                options: [
-                    "A) Creation of new states or alteration of boundaries",
-                    "B) Amendment to the election process of the President of India",
-                    "C) Abolition of Legislative Councils in states",
-                    "D) Use of English language in Parliament"
-                ],
-                correctIndex: 1,
-                formula: "Presidential Election (Art. 54/55) alters federal structure, requiring state ratification",
-                explanation: "Amendments that affect the federal structure of the Constitution, such as the election of the President (Articles 54 & 55) or representation of states in Parliament, require parliamentary special majority and ratification by half of the states."
-            },
-            {
                 text: "If a Constitutional Amendment Bill receives 280 'Aye' votes in a Lok Sabha with 420 members present and voting (Total Strength 545), does the bill pass?",
                 options: [
                     "A) Yes, because 280 is both > 273 and >= 2/3 of 420",
@@ -425,22 +552,10 @@ const CHAPTERS_DATA = {
                 correctIndex: 0,
                 formula: "Ayes = 280. Cond A (273): Pass. Cond B (2/3 of 420 = 280): Pass. Result = Pass.",
                 explanation: "Ayes (280) is greater than the Absolute Majority (273) and exactly equal to 2/3 of 420 (280). Thus, it satisfies both criteria and passes."
-            },
-            {
-                text: "What happens if a Constitutional Amendment Bill is passed by Lok Sabha but rejected by Rajya Sabha?",
-                options: [
-                    "A) The President can call a Joint Sitting to resolve the deadlock",
-                    "B) The bill is sent to the Supreme Court for arbitration",
-                    "C) The bill fails; there is no provision for a Joint Sitting for Constitutional Amendments",
-                    "D) The Speaker can override the Rajya Sabha's objection"
-                ],
-                correctIndex: 2,
-                formula: "No Joint Sitting for Constitutional Amendment Bills",
-                explanation: "Under Article 368, each House must pass the bill separately by the required special majority. There is no provision for a joint sitting to resolve deadlocks on Constitutional Amendment Bills."
             }
         ]
     },
-    4: {
+    6: {
         title: "Presidential Impeachment",
         subtitle: "The most stringent majority under the Indian Constitution.",
         ruleName: "Special Majority under Art. 61",
@@ -455,11 +570,6 @@ const CHAPTERS_DATA = {
                 term: "No Reductions",
                 desc: "Unlike other majorities, <strong>vacancies, absentees, and abstentions are NOT deducted</strong> from the denominator. The threshold is fixed and locked based on the statutory capacity of the chamber.",
                 tip: "For a Lok Sabha of 545 seats, the threshold is ALWAYS 364 votes, even if only 370 members show up to vote!"
-            },
-            {
-                term: "Constitutional Safeguard",
-                desc: "This design ensures that removing a Head of State requires massive, nationwide political consensus, preventing partisan coups or legislative ambushes.",
-                tip: "No President of India has ever been impeached in the nation's history."
             }
         ],
         timeline: [
@@ -474,12 +584,6 @@ const CHAPTERS_DATA = {
                 title: "Justice Ramaswami Case",
                 desc: "Though not a presidential impeachment, the removal of SC Justice V. Ramaswami failed in Lok Sabha because the ruling party abstained, preventing the 2/3 of present & voting requirement.",
                 lesson: "Shows how high supermajority thresholds protect high office-holders from easy removal."
-            },
-            {
-                year: "Present",
-                title: "Unbroken Record",
-                desc: "The absolute stability of the Indian Presidency stands as a testament to the high barrier of Article 61.",
-                lesson: "A fixed 2/3 of total strength ensures that impeachment is practically impossible without near-universal consensus."
             }
         ],
         simulator: {
@@ -489,40 +593,37 @@ const CHAPTERS_DATA = {
             vacancies: 25,
             absent: 100,
             factions: [
-                { id: "coalition-1", name: "ruling coalition", size: 300, coalition: "Treasury" },
-                { id: "coalition-2", name: "opposition block", size: 180, coalition: "Opposition" },
-                { id: "coalition-3", name: "regional parties", size: 40, coalition: "Neutral" }
+                { id: "coalition-1", name: "Ruling Coalition Core", size: 300, coalition: "Treasury" },
+                { id: "coalition-2", name: "Opposition Block", size: 180, coalition: "Opposition" },
+                { id: "coalition-3", name: "Regional Parties", size: 40, coalition: "Neutral" }
             ],
             verify: (ayes, nays, presentVoting) => {
-                // Threshold = 2/3 of Total strength (545) = 364.
-                const threshold = Math.ceil((545 * 2) / 3);
+                const threshold = Math.ceil((545 * 2) / 3); // 364
                 return {
                     success: ayes >= threshold,
                     threshold: threshold,
-                    formula: `Ayes (${ayes}) must be >= 2/3 of Total Strength (${threshold}) regardless of vacancies or attendance.`
+                    formula: `Ayes (${ayes}) must be >= 2/3 of Total Sanctioned Strength (${threshold}) out of 545.`
                 };
             }
         },
         questions: [
             {
-                text: "The Lok Sabha has a total strength of 545. If there are 35 vacancies, and 110 members are absent during the vote, how many votes of 'Aye' are required to pass a resolution for the impeachment of the President under Article 61?",
+                text: "The Lok Sabha has a total sanctioned strength of 545. If there are 35 vacancies and 110 members are absent on the voting day, how many 'Aye' votes are required to impeach the President?",
                 options: [
                     "A) 267 votes",
-                    "B) 273 votes",
-                    "C) 364 votes",
-                    "D) 340 votes"
+                    "B) 364 votes",
+                    "C) 340 votes",
+                    "D) 273 votes"
                 ],
-                correctIndex: 2,
-                formula: "Impeachment Threshold = 2/3 of Total Strength (545) = 364 votes.",
-                explanation: "Under Article 61, the impeachment resolution must be passed by a majority of not less than two-thirds of the TOTAL membership of the House. Denominator = 545 (vacancies/absentees are not deducted). Threshold = 2/3 of 545 = 363.33 -> 364 votes."
+                correctIndex: 1,
+                formula: "Threshold = 2/3 of Total Strength (545) = 363.33 -> 364.",
+                explanation: "Impeachment requires a majority of 2/3rds of the total membership. Denominator does not deduct vacancies (35) or absentees (110). Math: 545 * (2/3) = 363.33, which rounds up to 364."
             },
             {
-                text: "Which of the following is the correct ground mentioned in the Constitution of India for the impeachment of the President?",
+                text: "Under Article 61 of the Indian Constitution, the President can be impeached on which of the following grounds?",
                 options: [
-                    "A) Misbehavior or Incapacity",
+                    "A) Proven misbehavior or incapacity",
                     "B) Violation of the Constitution",
-                    "C) Insolvency or Bankrupt status",
-                    "D) Treason and bribery"
                 ],
                 correctIndex: 1,
                 formula: "Ground = 'Violation of the Constitution' (Art. 61)",
@@ -563,6 +664,104 @@ const CHAPTERS_DATA = {
                 correctIndex: 1,
                 formula: "Right to appear and be represented (Art. 61(3))",
                 explanation: "Under Article 61(3), when a charge is being investigated by either House, the President has the right to appear and be represented during the investigation."
+            }
+        ]
+    },
+    7: {
+        title: "Special (Art. 368 + Federal)",
+        subtitle: "Sovereign checks requiring federal state ratification.",
+        ruleName: "Special Majority with Federal Ratification",
+        ruleFormula: "Art. 368 Majority + Ratification by >= 50% States",
+        concepts: [
+            {
+                term: "Federal Check",
+                desc: "Amendments that alter the <strong>federal structure</strong> of the nation require a dual lock: Parliamentary Special Majority under Article 368, AND consent of the states.",
+                tip: "This prevents the Union Parliament from unilaterally altering state powers."
+            },
+            {
+                term: "State Consent",
+                desc: "The amendment must be ratified by the <strong>legislatures of not less than one-half of the States</strong> by resolutions passed to that effect.",
+                tip: "State ratifications are passed by a simple majority in each state assembly!"
+            },
+            {
+                term: "Applicable Clauses",
+                desc: "Required for amendments affecting the <strong>Presidential election (Art. 54, 55)</strong>, representation of states in Parliament, the <strong>Seventh Schedule lists</strong>, or Article 368 itself.",
+                tip: "This was the mechanism used to pass the historic GST system."
+            }
+        ],
+        timeline: [
+            {
+                year: "1969",
+                title: "22nd Amendment Act",
+                desc: "Created the autonomous state of Meghalaya within Assam. Required federal state ratifications to restructure state territories.",
+                lesson: "Significant shifts in state representation or territorial status invoke federal clauses."
+            },
+            {
+                year: "2016",
+                title: "The GST Act Passage",
+                desc: "The 101st Amendment overhauled the tax structure. It passed Parliament by special majority and was ratified by 16 state assemblies.",
+                lesson: "Economic federalism requires extensive consensus across both state and central assemblies."
+            }
+        ],
+        simulator: {
+            title: "Pass the Federal GST Amendment Bill",
+            desc: "Restructure the federal tax system by passing the GST bill. The Lok Sabha has 545 seats (with 5 vacancies). 450 members are present and voting. Drag factions to satisfy the Article 368 dual-sieve parliamentary thresholds (max of 273 and 2/3 of 450 = 300).",
+            totalSeats: 545,
+            vacancies: 5,
+            absent: 95,
+            factions: [
+                { id: "coalition-1", name: "Ruling Coalition Core", size: 290, coalition: "Treasury" },
+                { id: "coalition-2", name: "State-Aligned Regional Party", size: 45, coalition: "Neutral" },
+                { id: "opposition-1", name: "Opposition Core Party", size: 80, coalition: "Opposition" },
+                { id: "independents", name: "Independents/Others", size: 30, coalition: "Neutral" }
+            ],
+            verify: (ayes, nays, presentVoting) => {
+                const condAThreshold = Math.floor(545 / 2) + 1; // 273
+                const condBThreshold = Math.ceil((presentVoting * 2) / 3); // 300
+                const success = ayes >= condAThreshold && ayes >= condBThreshold;
+                const finalThreshold = Math.max(condAThreshold, condBThreshold);
+                return {
+                    success: success,
+                    threshold: finalThreshold,
+                    formula: `Requires Ayes >= 273 (Abs. Majority) AND Ayes >= 300 (2/3 of P&V) in Parliament. Current Ayes: ${ayes}.`
+                };
+            }
+        },
+        questions: [
+            {
+                text: "Which of the following matters requires a Parliamentary Special Majority under Article 368 plus ratification by at least half of the State Legislatures?",
+                options: [
+                    "A) Abolition of the Legislative Council in a State",
+                    "B) Amendment of the election process of the President of India",
+                    "C) Creation of a new State",
+                    "D) Changing the official language of the Union"
+                ],
+                correctIndex: 1,
+                formula: "Presidential Election (Art. 54 & 55) is a core federal provision.",
+                explanation: "Amendments changing the election process of the President (Art. 54/55) directly impact the states' representation in executive formation, requiring state ratification under Article 368(2) proviso."
+            },
+            {
+                text: "By what type of majority must the State Legislatures pass a resolution to ratify a federal constitutional amendment bill?",
+                options: [
+                    "A) Simple Majority",
+                    "B) Special Majority under Article 368",
+                    "C) Effective Majority",
+                    "D) Absolute Majority"
+                ],
+                correctIndex: 0,
+                explanation: "Although Parliament must pass a federal amendment by a Special Majority, the State Legislatures only need to pass it by a Simple Majority of those present and voting."
+            },
+            {
+                text: "For a federal amendment to become law, at least how many states must ratify it if India currently has 28 states?",
+                options: [
+                    "A) 14 states",
+                    "B) 15 states",
+                    "C) 10 states",
+                    "D) 28 states"
+                ],
+                correctIndex: 0,
+                formula: "Minimum states = 50% of 28 = 14.",
+                explanation: "The proviso to Article 368 requires ratification by legislatures of 'not less than one-half' of the states. For 28 states, this translates to at least 14 states."
             }
         ]
     }
@@ -812,7 +1011,7 @@ function loadChapter(chapNum) {
 }
 
 function lockSidebarItems() {
-    for (let i = 2; i <= 4; i++) {
+    for (let i = 2; i <= 7; i++) {
         const item = document.getElementById(`chap-${i}-item`);
         if (state.unlockedChapters.includes(i)) {
             item.classList.remove("locked");
@@ -946,21 +1145,36 @@ function initSlidersForChapter(chapNum) {
     const rangeAbsent = document.getElementById("range-absent");
 
     // Reset default slider attributes based on chapter to avoid out-of-bound errors
-    if (chapNum === 4) {
-        // Impeachment (Article 61)
+    if (chapNum === 7) {
+        // Special Majority + Federal
+        rangeTotal.value = 545;
+        rangeVacant.value = 5;
+        rangeAbsent.value = 95;
+    } else if (chapNum === 6) {
+        // Special Majority (Article 61)
         rangeTotal.value = 545;
         rangeVacant.value = 25;
         rangeAbsent.value = 100;
-    } else if (chapNum === 3) {
-        // Special Majority
+    } else if (chapNum === 5) {
+        // Special Majority (Article 368)
         rangeTotal.value = 545;
         rangeVacant.value = 5;
         rangeAbsent.value = 90;
-    } else if (chapNum === 2) {
-        // Effective / Absolute
+    } else if (chapNum === 4) {
+        // Special (Art. 249/312)
+        rangeTotal.value = 245;
+        rangeVacant.value = 5;
+        rangeAbsent.value = 60;
+    } else if (chapNum === 3) {
+        // Effective Majority
         rangeTotal.value = 545;
         rangeVacant.value = 23;
         rangeAbsent.value = 120;
+    } else if (chapNum === 2) {
+        // Absolute Majority
+        rangeTotal.value = 543;
+        rangeVacant.value = 0;
+        rangeAbsent.value = 0;
     } else {
         // Simple Majority
         rangeTotal.value = 545;
@@ -1004,21 +1218,33 @@ function updateCalculations() {
         threshold = Math.floor(presentVoting / 2) + 1;
         labelEl.innerHTML = `Passing Threshold <span class="calc-formula">(>50% of Present & Voting)</span>`;
     } else if (chap === 2) {
+        // Absolute Majority: > 50% of Total Sanctioned Strength
+        threshold = Math.floor(total / 2) + 1;
+        labelEl.innerHTML = `Passing Threshold <span class="calc-formula">(>50% of Total Strength)</span>`;
+    } else if (chap === 3) {
         // Effective Majority: > 50% of effective strength
         threshold = Math.floor(effectiveStrength / 2) + 1;
         labelEl.innerHTML = `Passing Threshold <span class="calc-formula">(>50% of Effective Strength)</span>`;
-    } else if (chap === 3) {
+    } else if (chap === 4) {
+        // Special (Art. 249/312): >= 2/3 of Present & Voting
+        threshold = Math.ceil((presentVoting * 2) / 3);
+        labelEl.innerHTML = `Passing Threshold <span class="calc-formula">(>= 2/3 of Present & Voting)</span>`;
+    } else if (chap === 5) {
         // Special Majority Art 368:
-        // Sieve A: > 50% of Total Strength (absolute)
-        // Sieve B: >= 2/3 of Present & Voting
         const condA = Math.floor(total / 2) + 1;
         const condB = Math.ceil((presentVoting * 2) / 3);
         threshold = Math.max(condA, condB);
         labelEl.innerHTML = `Passing Threshold <span class="calc-formula">(Max of Abs and 2/3 P&V)</span>`;
-    } else if (chap === 4) {
+    } else if (chap === 6) {
         // Presidential Impeachment Art 61: >= 2/3 of Total Strength
         threshold = Math.ceil((total * 2) / 3);
         labelEl.innerHTML = `Passing Threshold <span class="calc-formula">(>= 2/3 of Total Strength)</span>`;
+    } else if (chap === 7) {
+        // Special Majority Art 368 + Federal ratification
+        const condA = Math.floor(total / 2) + 1;
+        const condB = Math.ceil((presentVoting * 2) / 3);
+        threshold = Math.max(condA, condB);
+        labelEl.innerHTML = `Passing Threshold <span class="calc-formula">(Art. 368 Majority + Ratification by >= 50% States)</span>`;
     }
 
     document.getElementById("metric-threshold").textContent = threshold;
@@ -1358,14 +1584,22 @@ function initGridSimulator() {
     if (chap === 1) {
         threshold = Math.floor(votingCount / 2) + 1;
     } else if (chap === 2) {
-        const effective = total - vacanciesCount;
-        threshold = Math.floor(effective / 2) + 1;
+        threshold = Math.floor(total / 2) + 1; // Absolute Majority
     } else if (chap === 3) {
-        const condA = 51;
-        const condB = Math.ceil((votingCount * 2) / 3);
-        threshold = Math.max(condA, condB);
+        const effective = total - vacanciesCount;
+        threshold = Math.floor(effective / 2) + 1; // Effective Majority
     } else if (chap === 4) {
-        threshold = Math.ceil((total * 2) / 3);
+        threshold = Math.ceil((votingCount * 2) / 3); // Special Art 249/312
+    } else if (chap === 5) {
+        const condA = Math.floor(total / 2) + 1;
+        const condB = Math.ceil((votingCount * 2) / 3);
+        threshold = Math.max(condA, condB); // Special Art 368
+    } else if (chap === 6) {
+        threshold = Math.ceil((total * 2) / 3); // Special Art 61
+    } else if (chap === 7) {
+        const condA = Math.floor(total / 2) + 1;
+        const condB = Math.ceil((votingCount * 2) / 3);
+        threshold = Math.max(condA, condB); // Special Art 368 + Federal
     }
     
     gridThresholdNeeded = threshold;
@@ -1651,14 +1885,14 @@ function showQuizResults() {
         
         // Unlock next chapter in state if not unlocked already
         const nextChap = state.currentChapter + 1;
-        if (nextChap <= 4 && !state.unlockedChapters.includes(nextChap)) {
+        if (nextChap <= 7 && !state.unlockedChapters.includes(nextChap)) {
             state.unlockedChapters.push(nextChap);
             saveState();
             lockSidebarItems();
         }
 
         // Show next button if next chapter exists
-        if (state.currentChapter < 4) {
+        if (state.currentChapter < 7) {
             nextBtn.classList.remove("hidden");
             nextBtn.onclick = () => {
                 loadChapter(state.currentChapter + 1);
