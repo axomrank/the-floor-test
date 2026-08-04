@@ -249,102 +249,17 @@
             <div class="chapter-intro-banner">
                 <span class="chapter-badge">Chapter <span class="current-chap-num">1</span> Simulator</span>
                 <h1>Pass the Bill Simulator</h1>
-                <p>Drag and drop political factions to secure a floor test victory.</p>
+                <p>Toggle individual seats in the chamber to secure a floor test victory.</p>
             </div>
 
-            <!-- Play Mode Selector -->
-            <div class="play-mode-subnav">
-                <button class="play-mode-btn active" id="btn-play-factions">
-                    <i class="fa-solid fa-users-rectangle"></i> Faction Lobby (Play 1)
-                </button>
-                <button class="play-mode-btn" id="btn-play-grid">
-                    <i class="fa-solid fa-border-all"></i> Individual MP Grid (Play 2)
-                </button>
-            </div>
-
-            <!-- Play Mode 1: Faction Drag & Drop -->
-            <div class="simulator-layout" id="play-factions-view">
-                <div class="sim-instructions">
-                    <div class="scenario-card">
-                        <div class="scenario-header">
-                            <i class="fa-solid fa-scroll scenario-icon"></i>
-                            <div>
-                                <span class="scenario-badge">Active Scenario (Play 1)</span>
-                                <h3 id="scenario-title">Scenario Title</h3>
-                            </div>
-                        </div>
-                        <p id="scenario-description">Scenario description goes here...</p>
-                        <div class="scenario-details">
-                            <span id="detail-rule">Rule: Simple Majority (> 50% of present & voting)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="drag-drop-arena">
-                    <!-- Drop Zone: Aye -->
-                    <div class="drop-zone-wrapper">
-                        <div class="zone-header ayes-theme">
-                            <i class="fa-solid fa-check-circle"></i> AYES (Pass Bill)
-                        </div>
-                        <div class="drop-zone" id="zone-ayes" data-zone="aye">
-                            <div class="zone-placeholder">Drag factions here to VOTE YES</div>
-                        </div>
-                        <div class="zone-sum" id="sum-ayes">Total: 0 MPs</div>
-                    </div>
-
-                    <!-- Supply Area / Bench -->
-                    <div class="supply-wrapper">
-                        <div class="zone-header neutral-theme">
-                            <i class="fa-solid fa-users"></i> Parliamentary Factions
-                        </div>
-                        <div class="supply-area" id="faction-supply">
-                            <!-- Draggable elements populated by JS -->
-                        </div>
-                        <p class="supply-hint"><i class="fa-solid fa-hand-pointer"></i> Drag factions into AYES or NAYS zones</p>
-                    </div>
-
-                    <!-- Drop Zone: Nay -->
-                    <div class="drop-zone-wrapper">
-                        <div class="zone-header nays-theme">
-                            <i class="fa-solid fa-times-circle"></i> NAYS (Oppose Bill)
-                        </div>
-                        <div class="drop-zone" id="zone-nays" data-zone="nay">
-                            <div class="zone-placeholder">Drag factions here to VOTE NO</div>
-                        </div>
-                        <div class="zone-sum" id="sum-nays">Total: 0 MPs</div>
-                    </div>
-                </div>
-
-                <div class="simulator-controls">
-                    <button class="action-btn secondary-btn" id="reset-sim-btn">
-                        <i class="fa-solid fa-arrow-rotate-left"></i> Reset Board
-                    </button>
-                    <button class="action-btn primary-btn" id="submit-sim-btn">
-                        <i class="fa-solid fa-stamp"></i> Call for Division (Submit)
-                    </button>
-                </div>
-
-                <!-- Simulation Feedback Modal / Alert -->
-                <div class="sim-feedback hidden" id="sim-feedback">
-                    <div class="feedback-icon" id="feedback-icon-container">
-                        <i class="fa-solid fa-circle-check"></i>
-                    </div>
-                    <div class="feedback-text">
-                        <h3 id="feedback-title">Division Successful!</h3>
-                        <p id="feedback-desc">Feedback description...</p>
-                        <div class="xp-earned-banner" id="feedback-xp">+50 XP</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Play Mode 2: Individual MP Grid -->
-            <div class="simulator-layout hidden" id="play-grid-view">
+            <!-- Play Mode: Individual MP Grid -->
+            <div class="simulator-layout" id="play-grid-view">
                 <div class="sim-instructions">
                     <div class="scenario-card">
                         <div class="scenario-header">
                             <i class="fa-solid fa-table-cells scenario-icon"></i>
                             <div>
-                                <span class="scenario-badge">Interactive Grid (Play 2)</span>
+                                <span class="scenario-badge">Interactive Grid</span>
                                 <h3 id="grid-scenario-title">Scenario Title</h3>
                             </div>
                         </div>

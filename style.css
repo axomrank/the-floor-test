@@ -1,22 +1,22 @@
 /* Custom Properties for Design System */
 :root {
-    --bg-dark: #090e1a;
-    --bg-card: #131c31;
-    --bg-card-hover: #1b2641;
-    --color-primary: #1a365d;
-    --color-primary-light: #2a4d7c;
+    --bg-dark: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f1f5f9;
+    --color-primary: #0f172a;
+    --color-primary-light: #1e293b;
     --color-gold: #c59b27;
-    --color-gold-hover: #e0b33c;
-    --color-text-light: #f8fafc;
-    --color-text-muted: #94a3b8;
+    --color-gold-hover: #a8811e;
+    --color-text-light: #0f172a;
+    --color-text-muted: #64748b;
     --color-green: #10b981;
     --color-red: #ef4444;
-    --color-border: rgba(197, 155, 39, 0.2);
+    --color-border: rgba(15, 23, 42, 0.08);
     --font-heading: 'Cinzel', serif;
     --font-body: 'Outfit', sans-serif;
     --font-code: 'Space Grotesk', sans-serif;
-    --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 1px 1px rgba(197, 155, 39, 0.15) inset;
-    --shadow-gold-glow: 0 0 20px rgba(197, 155, 39, 0.3);
+    --shadow-premium: 0 10px 30px -10px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(15, 23, 42, 0.04);
+    --shadow-gold-glow: 0 0 20px rgba(197, 155, 39, 0.15);
     --border-radius: 12px;
     --transition-speed: 0.3s;
 }
@@ -681,10 +681,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0c1221;
+    background-color: var(--bg-card);
     border-radius: 8px;
     padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border);
 }
 
 canvas {
@@ -1351,14 +1351,14 @@ canvas {
 }
 
 .formula-block {
-    background-color: #0b111e;
+    background-color: var(--bg-dark);
     border: 1px solid var(--color-border);
     border-radius: 6px;
     padding: 1rem;
     font-family: var(--font-code);
     font-size: 1rem;
     font-weight: 600;
-    color: white;
+    color: var(--color-primary);
     text-align: center;
 }
 

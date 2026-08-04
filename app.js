@@ -53,30 +53,25 @@ const CHAPTERS_DATA = {
     1: {
         title: "Simple Majority",
         subtitle: "The baseline democratic mechanism of the floor test.",
-        ruleName: "Simple Majority",
-        ruleFormula: "> 50% of Members Present & Voting",
+        ruleName: "Simple Majority (Functional / Ordinary Majority)",
+        ruleFormula: "> 1/2 × (Members Present and Voting)",
         concepts: [
             {
-                term: "Definition",
-                desc: "A majority of <strong>more than 50% of the members present and voting</strong> in the house. It does not count members who are absent or those who choose to abstain from voting.",
-                tip: "This is the most common majority used in ordinary day-to-day legislative business."
+                term: "Legal Formula",
+                desc: "<strong>Simple Majority &gt; ½ × (Members Present and Voting)</strong>",
+                tip: "This formula strictly excludes absent members and members present who choose to abstain from voting."
             },
             {
-                term: "Applicability",
-                desc: "Used for passing <strong>Ordinary Bills, Money Bills, Financial Bills</strong>, and motions like the <strong>Confidence Motion, No-Confidence Motion, and Censure Motion</strong>.",
-                tip: "Also used for declaring President's Rule (Art. 356) and Financial Emergency (Art. 360)."
-            },
-            {
-                term: "The Math",
-                desc: "If House Strength = 545, Vacancies = 5, Absentees/Abstentions = 140, then:<br>Effective present & voting = 545 - 5 - 140 = 400.<br>Passing Threshold = <strong>(400 / 2) + 1 = 201 votes</strong>.",
-                tip: "Notice how vacancies and abstentions drop the required target threshold!"
+                term: "Key Applications",
+                desc: "Used for:<br>• Passing Ordinary, Financial, and Money Bills.<br>• Passing No-Confidence, Confidence, Censure, or Adjournment Motions.<br>• Election of the Speaker and Deputy Speaker of Lok Sabha and State Legislative Assemblies.<br>• Approving President’s Rule (Article 356) and Financial Emergency (Article 360).",
+                tip: "This is the most common majority type used in ordinary day-to-day legislative business."
             }
         ],
         timeline: [
             {
                 year: "1860",
                 title: "The Indigo Commission",
-                desc: "Established under the Indigo Commission Act to investigate indigo farmers' exploitation. Passed with a simple majority voice vote.",
+                desc: "Passed with a simple majority voice vote in the colonial council to investigate indigo farmers' exploitation.",
                 lesson: "Simple majority was the primary mechanism used by colonial councils to pass urgent administrative regulations."
             },
             {
@@ -94,18 +89,11 @@ const CHAPTERS_DATA = {
         ],
         simulator: {
             title: "Pass the Delhi Services Bill",
-            desc: "The Lok Sabha has a total strength of 543. There are 13 vacancies. On the day of voting, 110 opposition members staged a walkout. Drag enough coalition blocks into the 'Aye' drop zone to pass the bill using a Simple Majority.",
+            desc: "The Lok Sabha has a total strength of 543. There are 13 vacancies. On the day of voting, 110 opposition members staged a walkout. Tick enough cells in the grid to satisfy the Simple Majority threshold.",
             totalSeats: 543,
             vacancies: 13,
             absent: 110,
-            factions: [
-                { id: "coalition-1", name: "Ruling Party Core", size: 190, coalition: "Treasury" },
-                { id: "coalition-2", name: "Alliance Partner A", size: 45, coalition: "Treasury" },
-                { id: "coalition-3", name: "Alliance Partner B", size: 30, coalition: "Treasury" },
-                { id: "opposition-1", name: "Main Opposition Party", size: 90, coalition: "Opposition" },
-                { id: "opposition-2", name: "Left Front Block", size: 40, coalition: "Opposition" },
-                { id: "independents", name: "Undecided/Independents", size: 25, coalition: "Neutral" }
-            ],
+            factions: [],
             verify: (ayes, nays, presentVoting) => {
                 const threshold = Math.floor(presentVoting / 2) + 1;
                 return {
@@ -158,21 +146,16 @@ const CHAPTERS_DATA = {
         title: "Absolute Majority",
         subtitle: "The mandatory benchmark for government formation.",
         ruleName: "Absolute Majority",
-        ruleFormula: "> 50% of Total Sanctioned Strength",
+        ruleFormula: "> 1/2 × (Total Sanctioned Strength of the House)",
         concepts: [
             {
-                term: "Definition",
-                desc: "A majority of <strong>more than 50% of the total statutory/sanctioned strength</strong> of the house. It does not deduct vacancies, absentees, or abstentions.",
-                tip: "This is a fixed number regardless of temporary fluctuations in active membership."
+                term: "Legal Formula",
+                desc: "<strong>Absolute Majority &gt; ½ × (Total Sanctioned Strength of the House)</strong>",
+                tip: "Vacancies due to deaths, resignations, or disqualifications do NOT alter the required threshold."
             },
             {
-                term: "Applicability",
-                desc: "Used during <strong>Government Formation</strong> to prove a party or coalition has the mandate to govern. It is also the first sieve condition in Article 368.",
-                tip: "For a Lok Sabha of 543 seats, the Absolute Majority is always 273 votes."
-            },
-            {
-                term: "The Math",
-                desc: "If statutory strength = 543, then:<br>Passing Threshold = <strong>(543 / 2) + 1 = 272.5 rounded up to 273</strong>.<br>Even if 200 seats are vacant, you still need 273!",
+                term: "Key Applications",
+                desc: "Used for:<br>• Government formation to establish baseline structural command in the Lok Sabha / State Assemblies.<br>• Rarely used alone for passing legislation; generally acts as a baseline requirement combined with special majorities.",
                 tip: "This ensures stability and prevents minority control during high vacancy periods."
             }
         ],
@@ -198,17 +181,11 @@ const CHAPTERS_DATA = {
         ],
         simulator: {
             title: "Prove Government Formation Mandate",
-            desc: "The Lok Sabha has a total strength of 543. To claim the right to form a government, you must drag factions representing a solid majority to the 'Aye' drop zone to cross the absolute majority threshold of 273.",
+            desc: "The Lok Sabha has a total strength of 543. To claim the right to form a government, secure a solid absolute majority of at least 273.",
             totalSeats: 543,
             vacancies: 0,
             absent: 0,
-            factions: [
-                { id: "coalition-1", name: "Major Party Core", size: 240, coalition: "Treasury" },
-                { id: "coalition-2", name: "Regional Ally A", size: 25, coalition: "Treasury" },
-                { id: "coalition-3", name: "Regional Ally B", size: 15, coalition: "Treasury" },
-                { id: "opposition-1", name: "Opposition Front", size: 220, coalition: "Opposition" },
-                { id: "independents", name: "Independents/Others", size: 43, coalition: "Neutral" }
-            ],
+            factions: [],
             verify: (ayes, nays, presentVoting) => {
                 const threshold = Math.floor(543 / 2) + 1; // 273
                 return {
@@ -260,22 +237,17 @@ const CHAPTERS_DATA = {
         title: "Effective Majority",
         subtitle: "Used for structural changes and removal of key officers.",
         ruleName: "Effective Majority",
-        ruleFormula: "> 50% of Effective Strength (Total - Vacancies)",
+        ruleFormula: "> 1/2 × (Effective Strength of the House)",
         concepts: [
             {
-                term: "Effective Strength",
-                desc: "Effective Strength is defined as the <strong>Total Strength of the House minus Vacancies</strong> (due to resignation, death, or disqualification).",
-                tip: "Note that absentees and abstentions are NOT deducted when calculating effective strength!"
+                term: "Legal Formula",
+                desc: "<strong>Effective Majority &gt; ½ × (Effective Strength of the House)</strong><br>Where <strong>Effective Strength = (Total Sanctioned Strength) − (Vacancies)</strong>",
+                tip: "Vacancies due to resignation, death, or disqualification are subtracted prior to calculations. Absentees and abstentions are NOT deducted."
             },
             {
-                term: "Applicability",
-                desc: "An <strong>Effective Majority</strong> is used to remove the <strong>Vice President (ex-officio Chairman of Rajya Sabha)</strong>, the <strong>Speaker, or the Deputy Speaker</strong> of Lok Sabha/Vidhan Sabha.",
-                tip: "Under Article 94(c), the Speaker is removed by a resolution passed by a majority of all the *then* members of the House."
-            },
-            {
-                term: "The Math",
-                desc: "If House Strength = 545, Vacancies = 45, then:<br>Effective Strength = 545 - 45 = 500.<br>Passing Threshold = <strong>(500 / 2) + 1 = 251 votes</strong>.",
-                tip: "Absentees (e.g. 100) do not change this denominator; only actual vacant seats are deducted."
+                term: "Key Applications",
+                desc: "Used for:<br>• Removal of the Vice-President of India in the Rajya Sabha (Article 67(b)).<br>• Removal of the Speaker and Deputy Speaker of the Lok Sabha and State Legislative Assemblies.<br>• Removal of the Deputy Chairman of the Rajya Sabha.",
+                tip: "The Constitution references this majority category using the phrase 'all the then members'."
             }
         ],
         timeline: [
@@ -300,17 +272,11 @@ const CHAPTERS_DATA = {
         ],
         simulator: {
             title: "Remove the Speaker of the House",
-            desc: "A resolution has been moved to remove the Speaker of Lok Sabha. The total strength of the house is 543. However, there are 23 vacancies due to recent disqualifications. 120 members are absent on the day of voting. Drag enough blocks into the 'Aye' zone to satisfy the Effective Majority required.",
+            desc: "A resolution has been moved to remove the Speaker of Lok Sabha. The total strength of the house is 543. However, there are 23 vacancies due to recent disqualifications. 120 members are absent. Secure an Effective Majority in the grid.",
             totalSeats: 543,
             vacancies: 23,
             absent: 120,
-            factions: [
-                { id: "coalition-1", name: "Dissident Bloc", size: 140, coalition: "Treasury" },
-                { id: "coalition-2", name: "Opposition Front", size: 130, coalition: "Opposition" },
-                { id: "coalition-3", name: "Ruling Loyalists", size: 150, coalition: "Treasury" },
-                { id: "coalition-4", name: "Independents", size: 20, coalition: "Neutral" },
-                { id: "coalition-5", name: "Neutral Bloc", size: 80, coalition: "Neutral" }
-            ],
+            factions: [],
             verify: (ayes, nays, presentVoting) => {
                 const effectiveStrength = 543 - 23; // 520
                 const threshold = Math.floor(effectiveStrength / 2) + 1; // 261
@@ -363,23 +329,18 @@ const CHAPTERS_DATA = {
     4: {
         title: "Special Majority (Art. 249/312)",
         subtitle: "Federal override and national interest resolutions.",
-        ruleName: "Special Majority under Art. 249 / 312",
-        ruleFormula: ">= 2/3 of Members Present & Voting",
+        ruleName: "Special Majority (Type 1)",
+        ruleFormula: "≥ 2/3 × (Members Present and Voting)",
         concepts: [
             {
-                term: "The 2/3rds Sieve",
-                desc: "Requires a supermajority of <strong>at least two-thirds of the members present and voting</strong> during the division.",
-                tip: "Unlike Article 368, there is NO absolute majority baseline requirement here."
+                term: "Legal Formula",
+                desc: "<strong>Majority &ge; ⅔ &times; (Members Present and Voting)</strong>",
+                tip: "Absent members and members present who choose to abstain from voting are excluded. There is no absolute majority baseline requirement."
             },
             {
-                term: "Applicability",
-                desc: "Used for Rajya Sabha resolutions to authorize Parliament to make laws on <strong>State List subjects (Art. 249)</strong> or to establish a new <strong>All-India Service (Art. 312)</strong>.",
-                tip: "This allows Rajya Sabha, as the representative chamber of States, to grant federal powers to the Centre."
-            },
-            {
-                term: "The Math",
-                desc: "If Rajya Sabha Strength = 245, Vacancies = 5, Absentees/Abstentions = 60, then:<br>Present & Voting = 245 - 5 - 60 = 180.<br>Passing Threshold = <strong>(180 * 2) / 3 = 120 votes</strong>.",
-                tip: "Note that vacancies and absentees directly lower the present and voting denominator."
+                term: "Key Applications",
+                desc: "Exclusive to Rajya Sabha:<br>• <strong>Article 249</strong>: Authorizing Parliament to legislate on subjects in the State List in national interest.<br>• <strong>Article 312</strong>: Authorizing Parliament to create one or more new All-India Services common to Union and States.",
+                tip: "Serves as a federal override mechanisms representing state consensus at the Union level."
             }
         ],
         timeline: [
@@ -398,16 +359,11 @@ const CHAPTERS_DATA = {
         ],
         simulator: {
             title: "Create the Indian Environmental Service",
-            desc: "The Rajya Sabha is voting on a resolution under Article 312 to create a new All-India Service. The total strength of the house is 245, with 5 vacancies. 60 members are absent on the day of voting. Drag enough blocks into the 'Aye' zone to satisfy the 2/3rds present & voting threshold.",
+            desc: "The Rajya Sabha is voting on a resolution under Article 312 to create a new All-India Service. The total strength is 245, with 5 vacancies. 60 members are absent. Secure a 2/3rds Present & Voting supermajority in the grid.",
             totalSeats: 245,
             vacancies: 5,
             absent: 60,
-            factions: [
-                { id: "coalition-1", name: "Ruling Party Block", size: 120, coalition: "Treasury" },
-                { id: "coalition-2", name: "Support Block", size: 30, coalition: "Treasury" },
-                { id: "coalition-3", name: "Opposition Block", size: 25, coalition: "Opposition" },
-                { id: "coalition-4", name: "Neutrals", size: 10, coalition: "Neutral" }
-            ],
+            factions: [],
             verify: (ayes, nays, presentVoting) => {
                 const threshold = Math.ceil((presentVoting * 2) / 3);
                 return {
@@ -458,23 +414,18 @@ const CHAPTERS_DATA = {
     5: {
         title: "Special Majority (Art. 368)",
         subtitle: "The double-sieve formula for constitutional amendments.",
-        ruleName: "Special Majority under Art. 368",
-        ruleFormula: "> 50% of Total Strength AND >= 2/3 of Present & Voting",
+        ruleName: "Special Majority (Type 2)",
+        ruleFormula: "≥ 2/3 × (Present & Voting) AND > 1/2 × (Total Sanctioned Strength)",
         concepts: [
             {
-                term: "The Double Sieve",
-                desc: "To pass a Constitutional Amendment under Article 368, the bill must satisfy <strong>two conditions simultaneously</strong> during division voting.",
-                tip: "If either condition fails, the bill fails immediately!"
+                term: "Legal Formula",
+                desc: "Requires satisfying two criteria simultaneously:<br>1. <strong>Majority &ge; ⅔ &times; (Members Present and Voting)</strong><br>AND<br>2. <strong>Majority &gt; ½ &times; (Total Sanctioned Strength of the House)</strong>",
+                tip: "Vacancies are included in the second condition (Total Sanctioned Strength baseline)."
             },
             {
-                term: "Condition A",
-                desc: "Must be supported by an <strong>Absolute Majority</strong>: more than 50% of the total statutory membership of the house (e.g., 273 or more in Lok Sabha).",
-                tip: "This ensures that a thin attendance cannot alter the core constitutional charter."
-            },
-            {
-                term: "Condition B",
-                desc: "Must be supported by a <strong>2/3rds majority of the members present and voting</strong>. This is the supermajority component.",
-                tip: "Even if you have 273 'Ayes', if there are 450 voting, 2/3 of 450 is 300, so you need 300 'Ayes'!"
+                term: "Key Applications",
+                desc: "Used for:<br>• Passing Constitutional Amendment Bills that do not affect the federal structure.<br>• Removal of Supreme Court and High Court Judges.<br>• Removal of the Chief Election Commissioner (CEC) and Comptroller and Auditor General (CAG).<br>• Approval of National Emergency under Article 352 (in both Houses).",
+                tip: "Commonly known as the 'double-sieve' majority requirement."
             }
         ],
         timeline: [
@@ -489,21 +440,21 @@ const CHAPTERS_DATA = {
                 title: "61st Amendment Act",
                 desc: "Lowered the voting age in India from 21 to 18 years. Passed with an overwhelming bipartisan Special Majority.",
                 lesson: "Democratic expansions often receive near-unanimous special majority support."
+            },
+            {
+                year: "2016",
+                title: "101st Amendment (GST)",
+                desc: "Introduced the Goods and Services Tax. Required Article 368 Special Majority in Parliament + ratification by 50% of State Assemblies.",
+                lesson: "Federal amendments add a third state-ratification sieve to the Art. 368 special majority."
             }
         ],
         simulator: {
             title: "Pass the GST Constitutional Amendment",
-            desc: "The Lok Sabha is voting on a Constitutional Amendment Bill. The total strength of the house is 545 (with 5 vacancies). 450 members are present and voting. Drag the faction blocks to build a combination that satisfies both Article 368 Special Majority conditions.",
+            desc: "The Lok Sabha is voting on a Constitutional Amendment Bill. The total strength of the house is 545 (with 5 vacancies). 450 members are present and voting. Tick enough cells in the grid to satisfy the Article 368 dual-sieve thresholds.",
             totalSeats: 545,
             vacancies: 5,
             absent: 95,
-            factions: [
-                { id: "coalition-1", name: "Ruling Coalition Core", size: 280, coalition: "Treasury" },
-                { id: "coalition-2", name: "Federal Regional Party A", size: 30, coalition: "Neutral" },
-                { id: "coalition-3", name: "Federal Regional Party B", size: 25, coalition: "Neutral" },
-                { id: "opposition-1", name: "Opposition Party A", size: 85, coalition: "Opposition" },
-                { id: "opposition-2", name: "Opposition Party B", size: 30, coalition: "Opposition" }
-            ],
+            factions: [],
             verify: (ayes, nays, presentVoting) => {
                 const condAThreshold = Math.floor(545 / 2) + 1; // 273
                 const condBThreshold = Math.ceil((presentVoting * 2) / 3); // 300
@@ -558,18 +509,18 @@ const CHAPTERS_DATA = {
     6: {
         title: "Presidential Impeachment",
         subtitle: "The most stringent majority under the Indian Constitution.",
-        ruleName: "Special Majority under Art. 61",
-        ruleFormula: ">= 2/3 of the Total Strength of the House",
+        ruleName: "Special Majority (Type 3)",
+        ruleFormula: "≥ 2/3 × (Total Sanctioned Strength of the House)",
         concepts: [
             {
-                term: "The Ultimate Threshold",
-                desc: "Impeachment of the President of India under Article 61 requires a majority of <strong>not less than two-thirds of the total membership of the House</strong>.",
-                tip: "This is the most rigid majority requirement in the entire Constitution."
+                term: "Legal Formula",
+                desc: "<strong>Majority &ge; ⅔ &times; (Total Sanctioned Strength of the House)</strong>",
+                tip: "This is the strict and highest voting threshold prescribed under the Indian Constitution. Vacancies, absentees, and abstentions are NOT deducted."
             },
             {
-                term: "No Reductions",
-                desc: "Unlike other majorities, <strong>vacancies, absentees, and abstentions are NOT deducted</strong> from the denominator. The threshold is fixed and locked based on the statutory capacity of the chamber.",
-                tip: "For a Lok Sabha of 545 seats, the threshold is ALWAYS 364 votes, even if only 370 members show up to vote!"
+                term: "Key Applications",
+                desc: "Exclusively required for:<br>• <strong>Impeachment of the President of India</strong> on grounds of 'violation of the Constitution'.",
+                tip: "This ensures the President can only be removed under broad, overwhelming national consensus."
             }
         ],
         timeline: [
@@ -584,19 +535,21 @@ const CHAPTERS_DATA = {
                 title: "Justice Ramaswami Case",
                 desc: "Though not a presidential impeachment, the removal of SC Justice V. Ramaswami failed in Lok Sabha because the ruling party abstained, preventing the 2/3 of present & voting requirement.",
                 lesson: "Shows how high supermajority thresholds protect high office-holders from easy removal."
+            },
+            {
+                year: "Present",
+                title: "Unbroken Record",
+                desc: "The absolute stability of the Indian Presidency stands as a testament to the high barrier of Article 61.",
+                lesson: "A fixed 2/3 of total strength ensures that impeachment is practically impossible without near-universal consensus."
             }
         ],
         simulator: {
             title: "Impeach the President (Article 61)",
-            desc: "Charges of 'Violation of the Constitution' have been preferred. The Lok Sabha has 545 seats, with 25 vacant. 100 members are absent. Drag enough faction blocks to Ayes to achieve the critical 2/3 of Total Strength required to pass the impeachment resolution.",
+            desc: "Charges of 'Violation of the Constitution' have been preferred. The Lok Sabha has 545 seats, with 25 vacant. 100 members are absent. Secure the required 2/3 of Total Strength threshold in the grid.",
             totalSeats: 545,
             vacancies: 25,
             absent: 100,
-            factions: [
-                { id: "coalition-1", name: "Ruling Coalition Core", size: 300, coalition: "Treasury" },
-                { id: "coalition-2", name: "Opposition Block", size: 180, coalition: "Opposition" },
-                { id: "coalition-3", name: "Regional Parties", size: 40, coalition: "Neutral" }
-            ],
+            factions: [],
             verify: (ayes, nays, presentVoting) => {
                 const threshold = Math.ceil((545 * 2) / 3); // 364
                 return {
@@ -670,23 +623,18 @@ const CHAPTERS_DATA = {
     7: {
         title: "Special (Art. 368 + Federal)",
         subtitle: "Sovereign checks requiring federal state ratification.",
-        ruleName: "Special Majority with Federal Ratification",
-        ruleFormula: "Art. 368 Majority + Ratification by >= 50% States",
+        ruleName: "Special Majority (Type 4)",
+        ruleFormula: "Art. 368 Majority + Ratification by ≥ 50% of State Legislatures",
         concepts: [
             {
-                term: "Federal Check",
-                desc: "Amendments that alter the <strong>federal structure</strong> of the nation require a dual lock: Parliamentary Special Majority under Article 368, AND consent of the states.",
-                tip: "This prevents the Union Parliament from unilaterally altering state powers."
+                term: "Legal Formula",
+                desc: "Requires a two-tier verification:<br>1. <strong>Parliamentary Approval</strong>: &ge; ⅔ &times; (Present &amp; Voting) AND &gt; ½ &times; (Total Strength) [In each House]<br>2. <strong>State Ratification</strong>: Approval by &ge; 50% of State Legislatures via Simple Majority",
+                tip: "State ratifications are passed by basic simple majorities inside each respective State Legislative Assembly."
             },
             {
-                term: "State Consent",
-                desc: "The amendment must be ratified by the <strong>legislatures of not less than one-half of the States</strong> by resolutions passed to that effect.",
-                tip: "State ratifications are passed by a simple majority in each state assembly!"
-            },
-            {
-                term: "Applicable Clauses",
-                desc: "Required for amendments affecting the <strong>Presidential election (Art. 54, 55)</strong>, representation of states in Parliament, the <strong>Seventh Schedule lists</strong>, or Article 368 itself.",
-                tip: "This was the mechanism used to pass the historic GST system."
+                term: "Key Applications",
+                desc: "Required for amendments affecting:<br>• Election and manner of election of the President (Articles 54, 55).<br>• Extent of Union and State executive powers (Articles 73, 162).<br>• Provisions relating to the Supreme Court and High Courts.<br>• Distribution of legislative powers between Union and States (Seventh Schedule).<br>• Representation of States in Parliament.<br>• Amendment to Article 368 itself.<br>• Major tax reforms impacting state revenue sharing (e.g. GST via 101st Amendment).",
+                tip: "Designed to prevent the Union from unilaterally changing the federal equilibrium."
             }
         ],
         timeline: [
@@ -705,16 +653,11 @@ const CHAPTERS_DATA = {
         ],
         simulator: {
             title: "Pass the Federal GST Amendment Bill",
-            desc: "Restructure the federal tax system by passing the GST bill. The Lok Sabha has 545 seats (with 5 vacancies). 450 members are present and voting. Drag factions to satisfy the Article 368 dual-sieve parliamentary thresholds (max of 273 and 2/3 of 450 = 300).",
+            desc: "Restructure the federal tax system by passing the GST bill. The Lok Sabha has 545 seats (with 5 vacancies). 450 members are present and voting. Tick enough cells in the grid to satisfy the Parliamentary portion of the federal amendment.",
             totalSeats: 545,
             vacancies: 5,
             absent: 95,
-            factions: [
-                { id: "coalition-1", name: "Ruling Coalition Core", size: 290, coalition: "Treasury" },
-                { id: "coalition-2", name: "State-Aligned Regional Party", size: 45, coalition: "Neutral" },
-                { id: "opposition-1", name: "Opposition Core Party", size: 80, coalition: "Opposition" },
-                { id: "independents", name: "Independents/Others", size: 30, coalition: "Neutral" }
-            ],
+            factions: [],
             verify: (ayes, nays, presentVoting) => {
                 const condAThreshold = Math.floor(545 / 2) + 1; // 273
                 const condBThreshold = Math.ceil((presentVoting * 2) / 3); // 300
@@ -936,9 +879,6 @@ function initNavigation() {
         document.getElementById("level-modal-overlay").classList.add("hidden");
     });
 
-    // Play Mode Subnav toggles
-    document.getElementById("btn-play-factions").onclick = () => switchPlayMode("factions");
-    document.getElementById("btn-play-grid").onclick = () => switchPlayMode("grid");
 }
 
 function switchTab(tabName) {
@@ -965,7 +905,7 @@ function switchTab(tabName) {
 
     // If play tab is selected, trigger simulator initialization
     if (tabName === "play") {
-        switchPlayMode(activePlayMode);
+        initGridSimulator();
     } else if (tabName === "examine") {
         initExamineLobby();
     }
@@ -1268,7 +1208,7 @@ function renderVisualization(total, vacant, absent, present, threshold) {
     const chartHeight = canvas.height - margin.top - margin.bottom;
 
     // Draw background grid lines (Seaborn style)
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
+    ctx.strokeStyle = "rgba(0, 0, 0, 0.08)";
     ctx.lineWidth = 1;
     for (let i = 0; i <= 5; i++) {
         const y = margin.top + (chartHeight / 5) * i;
@@ -1299,7 +1239,7 @@ function renderVisualization(total, vacant, absent, present, threshold) {
         const y = canvas.height - margin.bottom - barHeight;
 
         // Draw Bar shadows
-        ctx.shadowColor = "rgba(0, 0, 0, 0.4)";
+        ctx.shadowColor = "rgba(0, 0, 0, 0.1)";
         ctx.shadowBlur = 6;
         ctx.shadowOffsetY = 3;
 
@@ -1312,14 +1252,14 @@ function renderVisualization(total, vacant, absent, present, threshold) {
         ctx.shadowBlur = 0;
         ctx.shadowOffsetY = 0;
 
-        // Value text on top of bar
-        ctx.fillStyle = "#ffffff";
+        // Value text on top of bar (dark text)
+        ctx.fillStyle = "#0f172a";
         ctx.font = "bold 11px 'Space Grotesk', sans-serif";
         ctx.textAlign = "center";
         ctx.fillText(cat.val, x + barWidth / 2, y - 8);
 
         // Label below bar (rotated if necessary, or split)
-        ctx.fillStyle = "#94a3b8";
+        ctx.fillStyle = "#64748b";
         ctx.font = "10px 'Outfit', sans-serif";
         ctx.save();
         ctx.translate(x + barWidth / 2, canvas.height - margin.bottom + 15);
@@ -1348,8 +1288,8 @@ function renderVisualization(total, vacant, absent, present, threshold) {
     ctx.textAlign = "left";
     ctx.fillText(`Pass Threshold: ${threshold}`, margin.left + 5, lineY - 8);
 
-    // Chart title details
-    ctx.fillStyle = "#ffffff";
+    // Chart title details (dark text)
+    ctx.fillStyle = "#0f172a";
     ctx.font = "12px 'Cinzel', serif";
     ctx.textAlign = "center";
     ctx.fillText("Active Floor Test Variable Ratios", canvas.width / 2, margin.top - 15);
@@ -1697,11 +1637,7 @@ function submitGridSimulator() {
 
 // Bind simulation buttons
 function bindSimulatorControls() {
-    // Play 1 (Factions)
-    document.getElementById("reset-sim-btn").onclick = initSimulator;
-    document.getElementById("submit-sim-btn").onclick = submitSimulator;
-
-    // Play 2 (Grid)
+    // Play (Grid)
     document.getElementById("reset-grid-btn").onclick = initGridSimulator;
     document.getElementById("submit-grid-btn").onclick = submitGridSimulator;
 }
@@ -1856,7 +1792,15 @@ function showRemedyScreen(isCorrect, customTitle = "") {
     document.getElementById("remedy-formula").textContent = q.formula;
     document.getElementById("remedy-explanation").textContent = q.explanation;
 
+    // Set auto-advance timeout of 3.5 seconds
+    const autoAdvanceTimeout = setTimeout(() => {
+        if (!remedyOverlay.classList.contains("hidden")) {
+            document.getElementById("remedy-continue-btn").click();
+        }
+    }, 3500);
+
     document.getElementById("remedy-continue-btn").onclick = () => {
+        clearTimeout(autoAdvanceTimeout);
         remedyOverlay.classList.add("hidden");
         document.getElementById("quiz-active-screen").classList.remove("hidden");
         currentQuestionIndex++;
