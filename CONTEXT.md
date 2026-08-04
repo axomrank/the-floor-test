@@ -62,14 +62,20 @@ interface Chapter {
 ```
 
 ### Active Chapters:
-1.  **Chapter 1: Simple Majority** (Ordinary & Money Bills; Confidence/No-Confidence Motions)
+1.  **Chapter 1: Simple Majority** (Ordinary Bills, Budget, Confidence Motions)
     *   *Formula*: `> 50% of present & voting`. (Deducts vacancies, absentees, and abstentions).
-2.  **Chapter 2: Effective & Absolute Majority** (Removing Presiding Officers / Gov formation)
-    *   *Formula*: `> 50% of Effective Strength` (Total - Vacancies). (Does NOT deduct absentees and abstentions).
-3.  **Chapter 3: Special Majority (Art. 368)** (Constitutional Amendments)
+2.  **Chapter 2: Absolute Majority** (Government Formation Benchmark)
+    *   *Formula*: `> 50% of Total Sanctioned Strength`. (Does NOT deduct vacancies, absentees, or abstentions).
+3.  **Chapter 3: Effective Majority** (Removing Presiding Officers)
+    *   *Formula*: `> 50% of Effective Strength` (Total - Vacancies). (Deducts vacancies; does NOT deduct absentees or abstentions).
+4.  **Chapter 4: Special Majority (Art. 249/312)** (State List Override, All-India Services)
+    *   *Formula*: `>= 2/3 of Present & Voting`. (Deducts vacancies, absentees, and abstentions).
+5.  **Chapter 5: Special Majority (Art. 368)** (Constitutional Amendments, Judge Removal)
     *   *Formula*: `> 50% of Total Strength AND >= 2/3 of Present & Voting` (Double-sieve logic).
-4.  **Chapter 4: Presidential Impeachment (Art. 61)** (Special Majority under Article 61)
+6.  **Chapter 6: Special Majority (Art. 61)** (Presidential Impeachment)
     *   *Formula*: `>= 2/3 of the Total statutory membership of the House` (Fixed threshold; vacancies, absentees, and abstentions are NOT deducted).
+7.  **Chapter 7: Special Majority (Art. 368 + Federal)** (Federal Provisions & GST Amendments)
+    *   *Formula*: `Art. 368 Parliamentary Special Majority + simple majority ratification by >= 50% of the States`.
 
 ---
 
